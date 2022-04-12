@@ -17,10 +17,15 @@ class CreateAsetsTable extends Migration
             $table->string('id_aset')->unique();
             $table->string('id_kategori');
             $table->string('nama_aset');
-            $table->string('hari_aset');
-            $table->string('jam_aset');
+            $table->string('gedung');
+            $table->string('ruangan');
+            $table->string('kondisi');
             $table->string('keterangan');
-            $table->string('foto_aset');
+
+            $table->double('harga_beli', 10, 2)->default(0);
+            $table->double('harga_jual', 10, 2)->nullable();
+            
+            $table->string('foto_aset')->nullable();
 
             $table->softDeletes();
             $table->timestamps();
