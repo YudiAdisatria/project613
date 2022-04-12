@@ -6,11 +6,12 @@ use Carbon\Carbon;
 use App\Models\Aset;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Kategori extends Model
 {
-    use HasFactory, SofDeletes;
+    use HasFactory, SoftDeletes;
 
     protected $fillable = [
         'id_kategori', 'nama_kategori', 'foto_kategori'

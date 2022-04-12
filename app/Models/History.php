@@ -6,11 +6,12 @@ use Carbon\Carbon;
 use App\Models\Aset;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class History extends Model
 {
-    use HasFactory, SofDeletes;
+    use HasFactory, SoftDeletes;
 
     protected $fillable = [
         'id_history', 'id_pemindah', 'id_aset', 'lokasi_lama',

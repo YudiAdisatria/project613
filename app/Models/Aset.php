@@ -7,11 +7,12 @@ use App\Models\History;
 use App\Models\Kategori;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Aset extends Model
 {
-    use HasFactory, SofDeletes;
+    use HasFactory, SoftDeletes;
 
     protected $fillable = [
         'id_aset', 'id_kategori', 'nama_aset', 'gedung',
