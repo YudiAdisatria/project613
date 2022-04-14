@@ -24,7 +24,7 @@ Route::prefix('dashboard')
     ->group(function() {
         Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
         Route::resource('users', UserController::class);
-        Route::resource('beritas', BeritaController::class);
-        Route::resource('fotos', FotoController::class);
+        //Route::resource('beritas', BeritaController::class);
+        //Route::resource('fotos', FotoController::class);
     });
 
