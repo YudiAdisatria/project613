@@ -2,8 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
+use App\Http\Requests\UserRequest;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Validator;
+use League\CommonMark\CommonMarkConverter;
+
 
 class UserController extends Controller
 {
@@ -18,7 +25,7 @@ class UserController extends Controller
             abort(403);
         }
 
-        $user = User::paginate(10);
+        $user = User::paginate(15);
 
         return view('users.index', [
             'user' => $user
@@ -32,7 +39,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('users.create');
     }
 
     /**
@@ -41,7 +48,7 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
         $data = $request->all();
 
@@ -67,9 +74,11 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
-        //
+        return view('users.edit', [
+            'item' => $user
+        ]);
     }
 
     /**
@@ -79,9 +88,33 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
+    public function update(Request $request, User $user)
+    {      
+        $data = $request->all();
+
+        Validator([
+            'noHp' => [
+                'required',
+                Rule::unique('users')->ignore($user->noHp, 'noHp'),
+            ],
+        ]);
+
+        if($request->file('profile_photo_path')){
+            $data['profile_photo_path'] = $request->file('profile_photo_path')->store('assets/user', 'public');
+        }
+
+        /*
+        $converter = new CommonMarkConverter([
+            'html_input' => 'strip',
+            'allow_unsafe_links' => false,
+        ]);
+        $data['name'] = $converter->convertToHtml($data['name']);
+        */
+        $data['password'] = Hash::make($data['password']);
+
+        $user->update($data);
+
+        return redirect()->route('users.index');
     }
 
     /**
@@ -90,8 +123,10 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        //
+        $user->delete();
+
+        return redirect()->route('users.index');
     }
 }
