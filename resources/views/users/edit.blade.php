@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            User &raquo; {!! $item->name !!} &raquo; Edit
+            User &raquo; {!! $item->nama !!} &raquo; Edit
         </h2>
     </x-slot>
 
@@ -57,14 +57,21 @@
                     <div class="flex flex-wrap -mx-3 mb-6">
                         <div class="w-full px-3">
                             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
-                                Image
+                                Roles
                             </label>
-                            <input name="profile_photo_path" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="file" placeholder="User Image">
+                            <select name="roles" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name">
+                                <option value="{{ $item->roles}}">{{ $item->roles }}</option>
+                                <option value="USER">User</option>
+                                <option value="ADMIN">Admin</option>
+                            </select>
                         </div>
                     </div>
 
                     <div class="flex flex-wrap -mx-3 mb-6">
                         <div class="w-full px-3">
+                            <label class="block uppercase tracking-wide text-gray-500 text-xs mb-2" for="grid-last-name">
+                                Password dan Password Confirmation digunakan untuk reset password saja
+                            </label>
                             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
                                 Password
                             </label>
@@ -78,19 +85,6 @@
                                 Password Confirmation
                             </label>
                             <input value="{{ old('password_confirmation') }}" name="password_confirmation" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="password" placeholder="User Password Confirmation">
-                        </div>
-                    </div>
-
-                    <div class="flex flex-wrap -mx-3 mb-6">
-                        <div class="w-full px-3">
-                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
-                                Roles
-                            </label>
-                            <select name="roles" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name">
-                                <option value="{{ $item->roles}}">{{ $item->roles }}</option>
-                                <option value="USER">User</option>
-                                <option value="ADMIN">Admin</option>
-                            </select>
                         </div>
                     </div>
 

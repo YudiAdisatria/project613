@@ -103,14 +103,12 @@ class UserController extends Controller
             $data['profile_photo_path'] = $request->file('profile_photo_path')->store('assets/user', 'public');
         }
 
-        /*
-        $converter = new CommonMarkConverter([
-            'html_input' => 'strip',
-            'allow_unsafe_links' => false,
-        ]);
-        $data['name'] = $converter->convertToHtml($data['name']);
-        */
-        $data['password'] = Hash::make($data['password']);
+        /*For reset password */
+        if($data['password'] != null){
+            $data['password'] = Hash::make($data['password']);
+        }else{
+            unset($data['password']);
+        }
 
         $user->update($data);
 
