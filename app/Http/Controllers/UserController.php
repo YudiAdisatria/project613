@@ -103,7 +103,7 @@ class UserController extends Controller
             $data['profile_photo_path'] = $request->file('profile_photo_path')->store('assets/user', 'public');
         }
 
-        /*For reset password */
+        /*For Reset Password */
         if($data['password'] != null){
             $data['password'] = Hash::make($data['password']);
         }else{
