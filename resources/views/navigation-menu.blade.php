@@ -18,7 +18,7 @@
                 </div>
             </div>
 
-            <!-- Manage User Admin -->
+            <!-- Admin Management -->
             @can('manage-user')
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-jet-nav-link href="{{ route('users.index') }}" :active="request()->routeIs('users.index')">
@@ -26,6 +26,18 @@
                     </x-jet-nav-link>
                 </div> 
             @endcan
+
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-jet-nav-link href="{{ route('kategoris.index') }}" :active="request()->routeIs('kategoris.index')">
+                        {{ __('KAtegori') }}
+                    </x-jet-nav-link>
+                </div> 
+
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-jet-nav-link href="{{ route('asets.index') }}" :active="request()->routeIs('asets.index')">
+                        {{ __('Aset') }}
+                    </x-jet-nav-link>
+                </div> 
 
             <div class="hidden sm:flex sm:items-center sm:ml-6">
                 <!-- Teams Dropdown -->
