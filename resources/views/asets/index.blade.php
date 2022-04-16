@@ -36,8 +36,8 @@
                                     <a href="{{ route('asets.edit', $item->id_aset) }}" class="inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mx-2 rounded">
                                         Pindah
                                     </a>
-                                    <form action="{{ route('asets.destroy', $item->id_aset) }}" method="POST" class="inline-block">
-                                        {!! method_field('delete') . csrf_field() !!} 
+                                    <form action="/dashboard/asets/{{$item->id_aset}}/jual" method="POST" class="inline-block">
+                                        {!! method_field('get') . csrf_field() !!} 
                                         <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 mx-2 rounded">
                                             Jual
                                         </button>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\Aset;
 use App\Models\Kategori;
 use Illuminate\Http\Request;
@@ -91,7 +92,66 @@ class AsetController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->all();
+        $aset = Aset::where('id_aset', '=', $id)->get();
+
+        if($request->file('foto_aset')){
+            $data['foto_aset'] = $request->file('foto_aset')->store('assets/aset', 'public');
+            
+            //remove URL/storage from getAttribute model foto
+            $temp = URL::to('/')."/storage/";
+            $temp1 = Str::remove($temp, $aset[0]['foto_kategori']);
+            
+            //delete photo
+            Storage::disk('public')->delete($temp1);
+
+            Aset::where('id_aset', $id)
+                ->update(['nama_aset' => $data['nama_aset'], 
+                    'gedung' => $data['gedung'], 
+                    'ruangan' => $data['ruangan'], 
+                    'kondisi' => $data['kondisi'], 
+                    'keterangan' => $data['keterangan'],
+                    'foto_aset' => $data['foto_aset'],  
+                    'updated_at' => Carbon::now()
+                ]);
+        }else{
+            Aset::where('id_aset', $id)
+                ->update(['nama_aset' => $data['nama_aset'], 
+                    'gedung' => $data['gedung'], 
+                    'ruangan' => $data['ruangan'], 
+                    'kondisi' => $data['kondisi'], 
+                    'keterangan' => $data['keterangan'], 
+                    'updated_at' => Carbon::now()
+                ]);
+        }
+
+        return redirect()->route('asets.index');
+    }
+
+    public function jual($id)
+    {
+        $edit = Aset::where('id_aset', '=', $id)->get();
+        $kategori = Kategori::get();
+
+        return view('asets.jual', [
+            'item' => $edit[0],
+            'kategori' => $kategori
+        ]);
+    }
+
+    public function save(Request $request, $id)
+    {
+        $data = $request->all();
+
+        $aset = Aset::where('id_aset', $id)
+            ->update(['harga_jual' => $data['harga_jual'],
+                'kondisi' => $data['kondisi'], 
+                'keterangan' => $data['keterangan'], 
+                'updated_at' => Carbon::now(), 
+                'deleted_at' => Carbon::now()
+            ]);
+
+        return redirect()->route('asets.index');
     }
 
     /**
@@ -100,8 +160,18 @@ class AsetController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        //
+        $data = $request->all();
+
+        $aset = Aset::where('id_aset', $id)
+            ->update(['harga_jual' => $data['harga_jual'],
+                'kondisi' => $data['kondisi'], 
+                'keterangan' => $data['keterangan'], 
+                'updated_at' => Carbon::now(), 
+                'deleted_at' => Carbon::now()
+            ]);
+
+        return redirect()->route('asets.index');
     }
 }
