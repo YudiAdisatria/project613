@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Carbon\Carbon;
+use App\Models\User;
 use App\Models\History;
 use App\Models\Kategori;
 use Illuminate\Database\Eloquent\Model;
@@ -16,7 +17,7 @@ class Aset extends Model
 
     protected $fillable = [
         'id_aset', 'id_kategori', 'nama_aset', 'gedung',
-        'ruangan', 'kondisi', 'keterangan', 'harga_beli', 'harga_jual', 
+        'ruangan', 'kondisi', 'keterangan', 'edited_by', 'harga_beli', 'harga_jual', 
         'foto_aset',
     ];
 
@@ -27,6 +28,10 @@ class Aset extends Model
 
     public function kategori(){
         return $this->belongsTo(Kategori::class,'id_kategori', 'id_kategori');
+    }
+
+    public function edit(){
+        return $this->belongsTo(User::class,'noHp', 'edited_by');
     }
 
     public function getCreatedAtAttribute($value){

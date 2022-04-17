@@ -46,6 +46,7 @@ class AsetController extends Controller
     public function store(AsetRequest $request)
     {
         $data = $request->all();
+        $data['edited_by'] = auth()->user()['noHp'];
 
         if($request->file('foto_aset')){
             $data['foto_aset'] = $request->file('foto_aset')->store('assets/aset', 'public');
@@ -93,6 +94,8 @@ class AsetController extends Controller
     public function update(Request $request, $id)
     {
         $data = $request->all();
+        $data['edited_by'] = auth()->user()['noHp'];
+        
         $aset = Aset::where('id_aset', '=', $id)->get();
 
         if($request->file('foto_aset')){
@@ -111,6 +114,7 @@ class AsetController extends Controller
                     'ruangan' => $data['ruangan'], 
                     'kondisi' => $data['kondisi'], 
                     'keterangan' => $data['keterangan'],
+                    'edited_by' => $data['edited_by'],
                     'foto_aset' => $data['foto_aset'],  
                     'updated_at' => Carbon::now()
                 ]);
@@ -120,7 +124,8 @@ class AsetController extends Controller
                     'gedung' => $data['gedung'], 
                     'ruangan' => $data['ruangan'], 
                     'kondisi' => $data['kondisi'], 
-                    'keterangan' => $data['keterangan'], 
+                    'keterangan' => $data['keterangan'],
+                    'edited_by' => $data['edited_by'], 
                     'updated_at' => Carbon::now()
                 ]);
         }
@@ -142,11 +147,13 @@ class AsetController extends Controller
     public function save(Request $request, $id)
     {
         $data = $request->all();
+        $data['edited_by'] = auth()->user()['noHp'];
 
         $aset = Aset::where('id_aset', $id)
             ->update(['harga_jual' => $data['harga_jual'],
                 'kondisi' => $data['kondisi'], 
                 'keterangan' => $data['keterangan'], 
+                'edited_by' => $data['edited_by'],
                 'updated_at' => Carbon::now(), 
                 'deleted_at' => Carbon::now()
             ]);
@@ -162,6 +169,7 @@ class AsetController extends Controller
      */
     public function destroy(Request $request, $id)
     {
+        /*
         $data = $request->all();
 
         $aset = Aset::where('id_aset', $id)
@@ -172,6 +180,7 @@ class AsetController extends Controller
                 'deleted_at' => Carbon::now()
             ]);
 
-        return redirect()->route('asets.index');
+        return redirect()->route('asets.index'); 
+        */
     }
 }

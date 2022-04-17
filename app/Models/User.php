@@ -76,4 +76,8 @@ class User extends Authenticatable
     public function history(){
         return $this->hasMany(History::class, 'id_pemindah', 'noHp');
     }
+
+    public function edit(){
+        return $this->hasMany(Aset::class, 'edited_by', 'noHp');
+    }
 }
