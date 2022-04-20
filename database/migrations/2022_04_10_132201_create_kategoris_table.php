@@ -16,6 +16,7 @@ class CreateKategorisTable extends Migration
         Schema::create('kategoris', function (Blueprint $table) {
             $table->string('id_kategori')->unique();
             $table->string('nama_kategori');
+            $table->string('keterangan')->nullable();
             $table->string('foto_kategori')->nullable();
 
             $table->softDeletes();

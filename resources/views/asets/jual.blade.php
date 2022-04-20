@@ -109,7 +109,7 @@
                                 Keterangan
                             </label>
                             <p class="text-gray-300 text-xs">isi dengan - apabila tidak ada keterangan</p>
-                            <input value="{{ old('keterangan') ?? $item->keterangan }}" name="keterangan" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="text" placeholder="Keterangan" required>
+                            <input value="{{ old('keterangan') }}" name="keterangan" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="text" placeholder="Keterangan" required>
                         </div>
                     </div>
 

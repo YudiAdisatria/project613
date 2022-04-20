@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AsetController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\RuanganController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\DashboardController;
 
@@ -30,5 +31,6 @@ Route::prefix('dashboard')
         Route::get('asets/{id}/jual', [AsetController::class, 'jual'])->name('asets.jual');
         Route::put('asets/{id}/save', [AsetController::class, 'save'])->name('asets.save');
         Route::resource('asets', AsetController::class);
+        Route::resource('ruangans', RuanganController::class);
     });
 

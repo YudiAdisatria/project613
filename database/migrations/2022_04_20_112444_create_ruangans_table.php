@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAsetsTable extends Migration
+class CreateRuangansTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,21 +13,11 @@ class CreateAsetsTable extends Migration
      */
     public function up()
     {
-        Schema::create('asets', function (Blueprint $table) {
-            $table->string('id_aset')->unique();
-            $table->string('id_kategori');
-            $table->string('nama_aset');
+        Schema::create('ruangans', function (Blueprint $table) {
+            $table->string('id_ruangan')->unique();
             $table->string('gedung');
             $table->string('ruangan');
-            $table->string('kondisi');
             $table->string('keterangan')->nullable();
-
-            $table->string('edited_by')->nullable();
-
-            $table->double('harga_beli', 10, 2)->default(0);
-            $table->double('harga_jual', 10, 2)->nullable();
-            
-            $table->string('foto_aset')->nullable();
 
             $table->softDeletes();
             $table->timestamps();
@@ -41,6 +31,6 @@ class CreateAsetsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('asets');
+        Schema::dropIfExists('ruangans');
     }
 }
