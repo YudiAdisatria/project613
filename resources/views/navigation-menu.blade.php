@@ -25,19 +25,31 @@
                                             </a>
                                         </li>
                                         <li class="group">
-                                            <a href="{{ route('ruangans.index') }}" class="text-base font-bold text-blue-600  py-2 mx-8 flex group-hover:text-teal-300">
-                                                Ruangan
-                                            </a>
-                                        </li>
-                                        <li class="group">
                                             <a href="{{ route('asets.index') }}" class="text-base font-bold text-blue-600  py-2 mx-8 flex group-hover:text-teal-300">
                                                 List Aset
                                             </a>
                                         </li>
+                                        @can('manage-user')
+                                        <li class="group">
+                                            <a href="{{ route('kategoris.index') }}" class="text-base font-bold text-blue-600  py-2 mx-8 flex group-hover:text-teal-300">
+                                                Kategori
+                                            </a>
+                                        </li>
                                         <li class="group">
                                             <a href="{{ route('asets.create') }}" class="text-base font-bold text-blue-600  py-2 mx-8 flex group-hover:text-teal-300">
-                                                Tambah Barang
+                                                Tambah Aset
                                             </a>
+                                        </li>
+                                        <li class="group">
+                                            <a href="{{ route('ruangans.index') }}" class="text-base font-bold text-blue-600  py-2 mx-8 flex group-hover:text-teal-300">
+                                                Ruangan
+                                            </a>
+                                        </li>
+                                        @endcan
+                                        <li class="group">
+                                            <p class="text-base font-bold text-blue-600  py-2 mx-8 flex group-hover:text-teal-300">
+                                            
+                                            </p>
                                         </li>
                                     </ul>
                                     </ul>
@@ -100,7 +112,7 @@
                 @endif
 
                 <!-- Settings Dropdown -->
-                <div class="ml-24 relative">
+                <div class="ml-3 relative">
                     <x-jet-dropdown align="right" width="48">
                         <x-slot name="trigger">
                             @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
