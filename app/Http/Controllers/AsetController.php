@@ -22,14 +22,13 @@ class AsetController extends Controller
             $aset = Aset::with(['kategori'])
                 ->where('id_aset', 'like', '%'. request('search') . '%')
                 ->orWhere('nama_aset', 'like', '%'. request('search') . '%')
-                ->orWhere('nama_aset', 'like', '%'. request('search') . '%')
+                ->orWhere('gedung', 'like', '%'. request('search') . '%')
                 ->orWhere('ruangan', 'like', '%'. request('search') . '%')
                 ->paginate(15);
             
             return view('asets.index', [
                 'aset' => $aset
             ]);
-            
         }
 
         $aset = Aset::with(['kategori'])->paginate(15);

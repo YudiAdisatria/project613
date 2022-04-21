@@ -11,14 +11,16 @@
                 <button class="bg-green-500 hover:bg-white text-white font-bold hover:text-green-500 py-1 px-3 border border-transparent hover:border-green-500 rounded mb-5" >
                     <a href="{{ route('asets.create') }}">Tambah Barang</a>
                 </button>
-
                 <div class="flex flex-wrap">
-                    <h1 class="text-2xl font-bold mb-2 mr-3">List Barang</h1>
-
-                    <form action="{{ route('asets.index') }}" class="mb-3">
-                        <input type="text" placeholder="Search ..." name=search>
-                        <button type="submit">search</button>
-                    </form>
+                    <div class="flex flex-wrap">
+                        <h1 class="text-2xl font-bold mb-2 mr-3">List Barang</h1>
+                        <div>
+                            <form action="{{ route('asets.index') }}" class="mb-3">
+                                <input type="text" placeholder="Search ..." name=search>
+                                <button type="submit" class="bg-black text-white py-1 px-3 border border-black hover:border-white rounded mr-5">search</button>
+                            </form>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="overflow-auto rounded-lg shadow hidden md:block">

@@ -3,47 +3,50 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
             <div class="flex">
-                <!-- Logo -->
-                <div class="shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
-                        <x-jet-application-mark class="block h-9 w-auto" />
-                    </a>
-                </div>
+                <!-- Navigation Links ROY -->
+                <header class="bg-white fixed top-0 left-0 w-full flex items-center">
+                    <div class="container">
+                        <div class="flex items-center justify-between relative">
+                            <div class="px4">
+                                <a href="{{ route('dashboard') }}" class="font-extrabold text-2xl text-blue-800 block py-6">Gereja Atmodirono</a>
+                            </div>
+                            <div class="flex items-center px-4">
+                                <button id="hambuger" name="hambuger" type="button" class="block absolute right-4 lg:hidden">
+                                    <span class="w-[30px] h-[2px] my-2 block bg-blue-600 transition duration-300 ease-in-out origin-top-left"></span>
+                                    <span class="w-[30px] h-[2px] my-2 block bg-blue-600 transition duration-300 ease-in-out"></span>
+                                    <span class="w-[30px] h-[2px] my-2 block bg-blue-600 transition duration-300 ease-in-out origin-bottom-left"></span>
+                                </button>
 
-                <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
-                    </x-jet-nav-link>
-                </div>
+                                <nav id="nav-menu" class="hidden absolute py-5 bg-white shadow-lg rounded-lg max-w-[250px] w-full right-4 top-full lg:block lg:static lg:bg-transparent lg:max-w-full lg:shadow-none lg:rounded-none">
+                                    <ul class="block lg:flex">
+                                        <li class="group">
+                                            <a href="{{ route('dashboard') }}" class="text-base font-bold text-blue-600 py-2 mx-8 flex group-hover:text-teal-400">
+                                                Beranda
+                                            </a>
+                                        </li>
+                                        <li class="group">
+                                            <a href="{{ route('ruangans.index') }}" class="text-base font-bold text-blue-600  py-2 mx-8 flex group-hover:text-teal-300">
+                                                Ruangan
+                                            </a>
+                                        </li>
+                                        <li class="group">
+                                            <a href="{{ route('asets.index') }}" class="text-base font-bold text-blue-600  py-2 mx-8 flex group-hover:text-teal-300">
+                                                List Aset
+                                            </a>
+                                        </li>
+                                        <li class="group">
+                                            <a href="{{ route('asets.create') }}" class="text-base font-bold text-blue-600  py-2 mx-8 flex group-hover:text-teal-300">
+                                                Tambah Barang
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </header>
             </div>
-
-            <!-- Admin Management -->
-            @can('manage-user')
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-jet-nav-link href="{{ route('users.index') }}" :active="request()->routeIs('users.index')">
-                        {{ __('User') }}
-                    </x-jet-nav-link>
-                </div> 
-
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-jet-nav-link href="{{ route('ruangans.index') }}" :active="request()->routeIs('ruangans.index')">
-                        {{ __('Ruangan') }}
-                    </x-jet-nav-link>
-                </div> 
-
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-jet-nav-link href="{{ route('kategoris.index') }}" :active="request()->routeIs('kategoris.index')">
-                        {{ __('KAtegori') }}
-                    </x-jet-nav-link>
-                </div> 
-            @endcan
-
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-jet-nav-link href="{{ route('asets.index') }}" :active="request()->routeIs('asets.index')">
-                        {{ __('Aset') }}
-                    </x-jet-nav-link>
-                </div> 
 
             <div class="hidden sm:flex sm:items-center sm:ml-6">
                 <!-- Teams Dropdown -->
@@ -97,7 +100,7 @@
                 @endif
 
                 <!-- Settings Dropdown -->
-                <div class="ml-3 relative">
+                <div class="ml-24 relative">
                     <x-jet-dropdown align="right" width="48">
                         <x-slot name="trigger">
                             @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
