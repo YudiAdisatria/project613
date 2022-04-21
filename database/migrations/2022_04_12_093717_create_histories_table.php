@@ -20,6 +20,7 @@ class CreateHistoriesTable extends Migration
             $table->string('lokasi_lama');
             $table->string('lokasi_baru');
             $table->string('keterangan');
+            $table->string('jenis_pindah');
 
             $table->softDeletes();
             $table->timestamps();

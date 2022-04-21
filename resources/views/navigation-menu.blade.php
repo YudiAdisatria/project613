@@ -25,13 +25,19 @@
                         {{ __('User') }}
                     </x-jet-nav-link>
                 </div> 
-            @endcan
+
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-jet-nav-link href="{{ route('ruangans.index') }}" :active="request()->routeIs('ruangans.index')">
+                        {{ __('Ruangan') }}
+                    </x-jet-nav-link>
+                </div> 
 
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-jet-nav-link href="{{ route('kategoris.index') }}" :active="request()->routeIs('kategoris.index')">
                         {{ __('KAtegori') }}
                     </x-jet-nav-link>
                 </div> 
+            @endcan
 
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-jet-nav-link href="{{ route('asets.index') }}" :active="request()->routeIs('asets.index')">

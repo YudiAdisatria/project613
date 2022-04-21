@@ -17,6 +17,21 @@ class AsetController extends Controller
      */
     public function index()
     {
+        
+        if(request('search')){
+            $aset = Aset::with(['kategori'])
+                ->where('id_aset', 'like', '%'. request('search') . '%')
+                ->orWhere('nama_aset', 'like', '%'. request('search') . '%')
+                ->orWhere('nama_aset', 'like', '%'. request('search') . '%')
+                ->orWhere('ruangan', 'like', '%'. request('search') . '%')
+                ->paginate(15);
+            
+            return view('asets.index', [
+                'aset' => $aset
+            ]);
+            
+        }
+
         $aset = Aset::with(['kategori'])->paginate(15);
         // return $aset[0];
         return view('asets.index', [
@@ -115,6 +130,7 @@ class AsetController extends Controller
                     'kondisi' => $data['kondisi'], 
                     'keterangan' => $data['keterangan'],
                     'edited_by' => $data['edited_by'],
+                    'jenis_pindah' => "PINDAH",
                     'foto_aset' => $data['foto_aset'],  
                     'updated_at' => Carbon::now()
                 ]);
@@ -126,6 +142,7 @@ class AsetController extends Controller
                     'kondisi' => $data['kondisi'], 
                     'keterangan' => $data['keterangan'],
                     'edited_by' => $data['edited_by'], 
+                    'jenis_pindah' => "PINDAH",
                     'updated_at' => Carbon::now()
                 ]);
         }
@@ -154,6 +171,7 @@ class AsetController extends Controller
                 'kondisi' => $data['kondisi'], 
                 'keterangan' => $data['keterangan'], 
                 'edited_by' => $data['edited_by'],
+                'jenis_pindah' => "JUAL",
                 'updated_at' => Carbon::now(), 
                 'deleted_at' => Carbon::now()
             ]);

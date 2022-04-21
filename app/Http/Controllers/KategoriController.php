@@ -21,6 +21,16 @@ class KategoriController extends Controller
      */
     public function index()
     {
+        if(request('search')){
+            $kategori = Kategori::where('id_kategori', 'like', '%'. request('search') . '%')
+                ->orWhere('nama_kategori', 'like', '%'. request('search') . '%')
+                ->paginate(15);
+            
+            return view('kategoris.index', [
+                'kategori' => $kategori
+            ]);
+        }
+
         $kategori = Kategori::paginate(15);
         return view('kategoris.index', [
             'kategori' => $kategori

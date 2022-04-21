@@ -28,7 +28,7 @@ DELIMITER $$
 CREATE TRIGGER tg_history
 BEFORE UPDATE ON asets FOR EACH ROW
 BEGIN
-    INSERT INTO histories(id_pemindah, id_aset, lokasi_lama, lokasi_baru, keterangan, deleted_at, created_at, updated_at) VALUES
-    (NEW.edited_by, OLD.id_aset, CONCAT(OLD.gedung,", ", OLD.ruangan), CONCAT(NEW.gedung, ", ", NEW.ruangan), NEW.keterangan, NULL, now(), now());
+    INSERT INTO histories(id_pemindah, id_aset, lokasi_lama, lokasi_baru, jenis_pindah, keterangan, deleted_at, created_at, updated_at) VALUES
+    (NEW.edited_by, OLD.id_aset, CONCAT(OLD.gedung,", ", OLD.ruangan), CONCAT(NEW.gedung, ", ", NEW.ruangan), NEW.jenis_pindah, NEW.keterangan, NULL, now(), now());
 END $$
 DELIMITER ;

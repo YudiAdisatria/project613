@@ -19,6 +19,17 @@ class RuanganController extends Controller
             abort(403);
         }
 
+        if(request('search')){
+            $ruangan = Ruangan::where('id_ruangan', 'like', '%'. request('search') . '%')
+                ->orWhere('gedung', 'like', '%'. request('search') . '%')
+                ->orWhere('ruangan', 'like', '%'. request('search') . '%')
+                ->paginate(15);
+            
+            return view('ruangans.index', [
+                'ruangan' => $ruangan
+            ]);
+        }
+
         $ruangan = Ruangan::paginate(15);
 
         return view('ruangans.index', [

@@ -9,10 +9,17 @@ module.exports = {
     ],
 
     theme: {
+        contrainer: {
+            center: true,
+            padding: '20px'
+        },
         extend: {
             fontFamily: {
                 sans: ['Nunito', ...defaultTheme.fontFamily.sans],
             },
+            screens: {
+                '2xl': '1320px',
+            }
         },
     },
 

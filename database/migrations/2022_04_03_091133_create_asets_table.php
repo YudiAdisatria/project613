@@ -23,6 +23,7 @@ class CreateAsetsTable extends Migration
             $table->string('keterangan')->nullable();
 
             $table->string('edited_by')->nullable();
+            $table->string('jenis_pindah')->nullable();
 
             $table->double('harga_beli', 10, 2)->default(0);
             $table->double('harga_jual', 10, 2)->nullable();

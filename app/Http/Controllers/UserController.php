@@ -25,6 +25,19 @@ class UserController extends Controller
             abort(403);
         }
 
+        if(request('search')){
+            $user = User::where('id', 'like', '%'. request('search') . '%')
+                ->orWhere('noHp', 'like', '%'. request('search') . '%')
+                ->orWhere('nama', 'like', '%'. request('search') . '%')
+                ->orWhere('divisi', 'like', '%'. request('search') . '%')
+                ->orWhere('roles', 'like', '%'. request('search') . '%')
+                ->paginate(15);
+            
+            return view('users.index', [
+                'user' => $user
+            ]);
+        }
+
         $user = User::paginate(15);
 
         return view('users.index', [
