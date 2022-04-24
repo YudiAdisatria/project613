@@ -85,6 +85,7 @@
                 @empty
                 @endforelse
                 <!-- small stop -->
+                <p class="pt-4"></p>
                 {{ $items->links() }}
             </div>
         </div>

@@ -21,6 +21,7 @@ class HistoryController extends Controller
                 ->orWhere('id_aset', 'like', '%'. request('search') . '%')
                 ->orWhere('lokasi_lama', 'like', '%'. request('search') . '%')
                 ->orWhere('lokasi_baru', 'like', '%'. request('search') . '%')
+                ->orWhere('jenis_pindah', 'like', '%'. request('search') . '%')
                 ->paginate(15);
             
             return view('asets.history', [

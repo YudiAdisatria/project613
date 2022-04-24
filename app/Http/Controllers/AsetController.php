@@ -5,8 +5,11 @@ namespace App\Http\Controllers;
 use Carbon\Carbon;
 use App\Models\Aset;
 use App\Models\Kategori;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Requests\AsetRequest;
+use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Facades\Storage;
 
 class AsetController extends Controller
 {
@@ -31,7 +34,7 @@ class AsetController extends Controller
             ]);
         }
 
-        $aset = Aset::with(['kategori'])->paginate(7);
+        $aset = Aset::with(['kategori'])->paginate(3);
 
         // return $aset[0];
         return view('asets.index', [
