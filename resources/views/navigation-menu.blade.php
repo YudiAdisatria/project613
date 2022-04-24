@@ -36,8 +36,8 @@
                                             </a>
                                         </li>
                                         <li class="group">
-                                            <a href="{{ route('asets.create') }}" class="text-base font-bold text-blue-600  py-2 mx-8 flex group-hover:text-teal-300">
-                                                Tambah Aset
+                                            <a href="{{ route('users.index') }}" class="text-base font-bold text-blue-600  py-2 mx-8 flex group-hover:text-teal-300">
+                                                User
                                             </a>
                                         </li>
                                         <li class="group">

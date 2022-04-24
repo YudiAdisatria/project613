@@ -18,10 +18,10 @@
         <!-- Scripts -->
         <script src="{{ mix('js/app.js') }}" defer></script>
     </head>
-    <body class="font-sans antialiased">
+    <body class="font-sans antialiased bg-gray-200">
         <x-jet-banner />
 
-        <div class="min-h-screen bg-gray-300">
+        <div class="min-h-screen bg-gray-200 mb-14">
             @livewire('navigation-menu')
 
             <!-- Page Heading -->
@@ -34,13 +34,15 @@
             @endif
 
             <!-- Page Content -->
-            <main>
+            <main class="relative">
                 {{ $slot }}
             </main>
         </div>
+        @stack('modals')
 
+        @livewireScripts
         <!-- Footer Section Start-->
-        <footer class="pt-24 pb-12 bg-blue-600">
+        <footer class="pt-24 pb-12 bg-blue-600 bottom-0 mt-8">
             <div class="container">
                 <div class="flex flex-wrap">
                     <div class="w-full px-4 mb-12 md:w-1/2 text-white font-medium lg:w-1/2">
@@ -86,8 +88,5 @@
             </div>
         </footer>
         <!-- Footer Section End-->
-        @stack('modals')
-
-        @livewireScripts
     </body>
 </html>

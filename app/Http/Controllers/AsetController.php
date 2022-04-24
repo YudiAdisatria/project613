@@ -31,7 +31,8 @@ class AsetController extends Controller
             ]);
         }
 
-        $aset = Aset::with(['kategori'])->paginate(15);
+        $aset = Aset::with(['kategori'])->paginate(7);
+
         // return $aset[0];
         return view('asets.index', [
             'aset' => $aset

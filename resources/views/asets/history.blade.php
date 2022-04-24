@@ -14,6 +14,7 @@
                     </div>
                     <div class="self-end px-2 lg:w-1/2">
                         <form action="{{ route('histories.index') }}" class="mb-3 flex">
+                            <p class="text-xs">untuk nama pemindah gunakan nomor HP pemindah </p>
                             <input type="text" placeholder="Search ..." name=search class="placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm mr-4">
                             <button type="submit" class="bg-black text-white py-1 px-3 border border-black hover:border-white rounded">
                                 search
