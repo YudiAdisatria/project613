@@ -5,6 +5,7 @@ use App\Http\Controllers\AsetController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RuanganController;
 use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\DashboardController;
 
 /*
@@ -19,7 +20,7 @@ use App\Http\Controllers\DashboardController;
 */
 
 Route::get('/', function () {
-    return view('login');
+    return redirect('/login');
 });
 
 Route::prefix('dashboard')
@@ -32,5 +33,6 @@ Route::prefix('dashboard')
         Route::put('asets/{id}/save', [AsetController::class, 'save'])->name('asets.save');
         Route::resource('asets', AsetController::class);
         Route::resource('ruangans', RuanganController::class);
+        Route::resource('histories', HistoryController::class);
     });
 

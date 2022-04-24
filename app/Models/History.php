@@ -19,12 +19,11 @@ class History extends Model
     ];
 
     public function aset(){
-                            //class mana, fk class, fk sini
         return $this->hasMany(Aset::class,'id_aset', 'id_aset');
     }
 
     public function user(){
-        return $this->belongsTo(User::class,'noHp', 'id_pemindah');
+        return $this->belongsTo(User::class,'id_pemindah', 'noHp');
     }
 
     public function getCreatedAtAttribute($value){
