@@ -4,7 +4,7 @@
         <div class="flex justify-between h-16">
             <div class="flex">
                 <!-- Navigation Links ROY -->
-                <header class="bg-white fixed top-0 left-0 w-full flex items-center">
+                <header class="bg-white fixed top-0 left-0 w-full flex items-center z-10">
                     <div class="container">
                         <div class="flex items-center justify-between relative">
                             <div class="px4">
