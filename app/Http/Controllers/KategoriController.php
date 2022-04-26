@@ -21,6 +21,10 @@ class KategoriController extends Controller
      */
     public function index()
     {
+        if (Gate::denies('manage-user')) {
+            abort(403);
+        }
+        
         if(request('search')){
             $kategori = Kategori::where('id_kategori', 'like', '%'. request('search') . '%')
                 ->orWhere('nama_kategori', 'like', '%'. request('search') . '%')

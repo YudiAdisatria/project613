@@ -14,6 +14,10 @@ class HistoryController extends Controller
      */
     public function index()
     {
+        if (Gate::denies('manage-user')) {
+            abort(403);
+        }
+        
         if(request('search')){
             $history = History::with(['user'])
                 ->where('id_history', 'like', '%'. request('search') . '%')

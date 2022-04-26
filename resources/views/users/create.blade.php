@@ -8,6 +8,7 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div>
+                <!--Error-->
                 @if($errors->any())
                 <div class="mb-5" role="alert">
                     <div class="bg-red-500 text-white font-bold rounded">
@@ -24,36 +25,68 @@
                     </div>
                 </div>
                 @endif
+                <!--Error-->
+                
                 <form action="{{ route('users.store') }}" class="w-full" method="POST" enctype="multipart/form-data">
                     @csrf
-                    <div class="flex flex-wrap -mx-3 mb-6">
-                        <div class="w-full px-3">
+                    <div class="flex flex-wrap"> 
+                        <div class="w-full  self-center mt-2 px-3 lg:w-1/2">
                             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
                                 Nomor Handphone
                             </label>
                             <input value="{{ old('noHp') }}" name="noHp" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="text" placeholder="No Handphone">
+                        
                         </div>
-                    </div>
-                    
-                    <div class="flex flex-wrap -mx-3 mb-6">
-                        <div class="w-full px-3">
-                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
+                        
+
+                        <div class="w-full px-3 mt-2 self-end lg:w-1/2">
+                        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
                                 Nama
                             </label>
                             <input value="{{ old('nama') }}" name="nama" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="text" placeholder="Nama User">
-                        </div>
+                        </div>       
                     </div>
 
-                    <div class="flex flex-wrap -mx-3 mb-6">
-                        <div class="w-full px-3">
+                    <div class="flex flex-wrap">
+                        
+                        <div class="w-full  self-center mt-2 px-3 lg:w-1/2">
                             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
                                 Divisi
                             </label>
                             <input value="{{ old('divisi') }}" name="divisi" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="text" placeholder="Divisi User">
                         </div>
+                        
+
+                        
+                        <div class="w-full  self-center mt-2 px-3 lg:w-1/2">
+                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
+                                Roles
+                            </label>
+                            <select name="roles" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name">
+                                <option value="USER">User</option>
+                                <option value="ADMIN">Admin</option>
+                            </select>
+                        </div>   
                     </div>
 
-                    <div class="flex flex-wrap -mx-3 mb-6">
+                    <div  class="flex flex-wrap">
+                        <div class="w-full  self-center mt-2 px-3 lg:w-1/2">
+                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
+                                Password
+                            </label>
+                            <input value="{{ old('password') }}" name="password" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="password" placeholder="User Password">
+                        </div>
+
+                        <div class="w-full  self-center mt-2 px-3 lg:w-1/2">
+                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
+                                Password Confirmation
+                            </label>
+                            <input value="{{ old('password_confirmation') }}" name="password_confirmation" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="password" placeholder="User Password Confirmation">
+                        </div>
+                    </div>
+                    
+
+                    <div class="flex flex-wrap mt-2">
                         <div class="w-full px-3">
                             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
                                 Image
@@ -62,40 +95,10 @@
                         </div>
                     </div>
 
-                    <div class="flex flex-wrap -mx-3 mb-6">
-                        <div class="w-full px-3">
-                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
-                                Password
-                            </label>
-                            <input value="{{ old('password') }}" name="password" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="password" placeholder="User Password">
-                        </div>
-                    </div>
-
-                    <div class="flex flex-wrap -mx-3 mb-6">
-                        <div class="w-full px-3">
-                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
-                                Password Confirmation
-                            </label>
-                            <input value="{{ old('password_confirmation') }}" name="password_confirmation" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="password" placeholder="User Password Confirmation">
-                        </div>
-                    </div>
-
-                    <div class="flex flex-wrap -mx-3 mb-6">
-                        <div class="w-full px-3">
-                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
-                                Roles
-                            </label>
-                            <select name="roles" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name">
-                                <option value="USER">User</option>
-                                <option value="ADMIN">Admin</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="flex flex-wrap -mx-3 mb-6">
+                    <div class="flex flex-wrap mt-10 ">
                         <div class="w-full px-3 text-right">
                             <button type="submit" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
-                                Save User
+                                Save aset
                             </button>
                         </div>
                     </div>
