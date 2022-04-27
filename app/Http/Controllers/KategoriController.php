@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\URL;
 use App\Http\Requests\KategoriRequest;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Gate;
 
 class KategoriController extends Controller
 {
