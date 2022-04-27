@@ -113,4 +113,5 @@
             {{ $items->links() }}
         </div>
     </section>
+    <script src="{{ asset('js/roy.js') }}"></script>
 </x-app-layout>

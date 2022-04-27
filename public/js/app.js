@@ -4727,29 +4727,7 @@ var navMenu = document.querySelector('#nav-menu');
 hambuger.addEventListener('click', function () {
   hambuger.classList.toggle('hambuger-active');
   navMenu.classList.toggle('hidden');
-}); //search
-
-function tablesearch() {
-  var input, filter, table, tr, td, txtValue;
-  input = document.getElementById("myInput");
-  filter = input.value.toUppercase();
-  table = document.getElementById("myTable");
-  tr = table.getElementById("tr");
-
-  for (var i = 0; i < tr.length; i++) {
-    td = tr[i].getElementById("td")[0];
-
-    if (td) {
-      txtValue = td.textcontent || td.innerText;
-
-      if (txtValue.toUppercase().indexOf(filter) > -1) {
-        tr[i].style.display = "";
-      } else {
-        tr[i].style.display = "none";
-      }
-    }
-  }
-}
+});
 
 /***/ }),
 

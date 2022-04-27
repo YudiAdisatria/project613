@@ -20,7 +20,7 @@ class AsetController extends Controller
      */
     public function index()
     {
-        
+
         if(request('search')){
             $aset = Aset::with(['kategori'])
                 ->where('id_aset', 'like', '%'. request('search') . '%')

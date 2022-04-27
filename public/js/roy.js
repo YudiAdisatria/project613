@@ -1,11 +1,3 @@
-require('./bootstrap');
-
-import Alpine from 'alpinejs';
-
-window.Alpine = Alpine;
-
-Alpine.start();
-
 // Navbar Fixed
 window.onscroll = function() {
     const header = document.querySelector('header');
@@ -26,4 +18,3 @@ hambuger.addEventListener('click', function() {
     hambuger.classList.toggle('hambuger-active');
     navMenu.classList.toggle('hidden');
 });
-

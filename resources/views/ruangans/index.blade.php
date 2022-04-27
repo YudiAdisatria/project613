@@ -67,7 +67,7 @@
             </div>
 
                 <!-- small -->
-            @forelse ($kategori as $item)
+            @forelse ($ruangan as $item)
             <div class="bg-gray-200">
                 <div class="grid grid-cols-1 gap-4 md:hidden">
                     <div class="bg-white p-4 rounded-lg shadow mb-5">
