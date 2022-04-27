@@ -32,9 +32,18 @@
                     <div class="flex flex-wrap"> 
                         <div class="w-full  self-center mt-2 px-3 lg:w-1/2">
                             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
+                                ID Ruangan
+                            </label>
+                            <input value="{{ old('id_ruangan') }}" name="id_ruangan" class="appearance-none block w-full bg-white text-gray-700 border border-gray-100 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="text" placeholder="ID Ruangan">
+                        </div>
+                    </div>
+
+                    <div class="flex flex-wrap"> 
+                        <div class="w-full  self-center mt-2 px-3 lg:w-1/2">
+                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
                                 Gedung
                             </label>
-                            <input value="{{ old('gedung') }}" name="gedung" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="text" placeholder="Gedung">
+                            <input value="{{ old('gedung') }}" name="gedung" class="appearance-none block w-full bg-white text-gray-700 border border-gray-100 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="text" placeholder="Gedung">
                         </div>
                         
 
@@ -42,15 +51,15 @@
                             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
                                 Ruangan
                             </label>
-                            <input value="{{ old('ruangan') }}" name="ruangan" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="text" placeholder="Ruangan">
+                            <input value="{{ old('ruangan') }}" name="ruangan" class="appearance-none block w-full bg-white text-gray-700 border border-gray-100 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="text" placeholder="Ruangan">
                         </div>
                     </div>
 
-                    <div class="flex flex-wrap">
+                    <div class="w-full px-3 mt-2 self-end">
                         <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
                                 Keterangan
                         </label>
-                        <input value="{{ old('keterangan') }}" name="keterangan" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="text" placeholder="Keterangan">
+                        <input value="{{ old('keterangan') }}" name="keterangan" class="appearance-none block w-full bg-white text-gray-700 border border-gray-100 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="text" placeholder="Keterangan">
                     </div>
 
                     <div class="flex flex-wrap mt-10 ">

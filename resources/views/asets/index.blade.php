@@ -45,7 +45,7 @@
                             <td class="p-3 text-sm text-blue-500 font-bold ">{{ $item->id_aset }}</td>
                             <td>{{ $item->nama_aset }}</td>
                             <td>{{ $item->kategori->nama_kategori }}</td>
-                            <td>{{ $item->gedung }}</td>
+                            <td>{{ $item->gedung }}, {{ $item->ruangan }}</td>
                             <td>{{ $item->kondisi }}</td>
                             <td class="text-sm">
                                 <button type="submit" class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-1 px-3 border border-blue-500 hover:border-transparent rounded mb-1">

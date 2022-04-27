@@ -12,7 +12,7 @@ class ruangan extends Model
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
-        'id_kategori', 'nama_kategori', 'foto_kategori', 'keterangan'
+        'id_ruangan', 'gedung', 'ruangan', 'keterangan'
     ];
 
     public function getCreatedAtAttribute($value){

@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\Ruangan;
 use Illuminate\Http\Request;
+use App\Http\Requests\RuanganRequest;
 use Illuminate\Support\Facades\Gate;
 
 class RuanganController extends Controller
@@ -14,7 +16,7 @@ class RuanganController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    {   
         if (Gate::denies('manage-user')) {
             abort(403);
         }
@@ -56,7 +58,7 @@ class RuanganController extends Controller
     public function store(RuanganRequest $request)
     {
         $data = $request->all();
-
+        
         Ruangan::create($data);
 
         return redirect()->route('ruangans.index');
@@ -70,7 +72,8 @@ class RuanganController extends Controller
      */
     public function show($id)
     {
-        //
+        $ruangan = Ruangan::Where('gedung', 'like', '%'.$id.'%')->get();
+        return response()->json($ruangan);
     }
 
     /**
@@ -84,7 +87,7 @@ class RuanganController extends Controller
         $edit = Ruangan::get();
 
         return view('ruangans.edit', [
-            'item' => $edit
+            'item' => $edit[0]
         ]);
     }
 

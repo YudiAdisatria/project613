@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Carbon\Carbon;
 use App\Models\Aset;
+use App\Models\Ruangan;
 use App\Models\Kategori;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -50,8 +51,10 @@ class AsetController extends Controller
     public function create()
     {
         $kategori = Kategori::get();
+        $ruangan = Ruangan::get('gedung')->groupBy('gedung');
         return view('asets.create', [
-            'kategori' => $kategori
+            'kategori' => $kategori,
+            'ruangan' => $ruangan
         ]);
     }
 
@@ -95,10 +98,12 @@ class AsetController extends Controller
     {
         $edit = Aset::where('id_aset', '=', $id)->get();
         $kategori = Kategori::get();
-
+        $ruangan = Ruangan::get('gedung')->groupBy('gedung');
+        
         return view('asets.edit', [
             'item' => $edit[0],
-            'kategori' => $kategori
+            'kategori' => $kategori,
+            'ruangan' => $ruangan
         ]);
     }
 

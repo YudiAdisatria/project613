@@ -4727,6 +4727,37 @@ var navMenu = document.querySelector('#nav-menu');
 hambuger.addEventListener('click', function () {
   hambuger.classList.toggle('hambuger-active');
   navMenu.classList.toggle('hidden');
+}); //List Ruangan
+
+$(document).ready(function () {
+  $('#gedung').on('change', function () {
+    var ruanganID = $(this).val();
+    $('#ruangan').empty();
+    $('#ruangan').append('<option label> Processing </option>');
+
+    if (ruanganID) {
+      $.ajax({
+        url: '/dashboard/ruangans/' + ruanganID,
+        type: "GET",
+        data: {
+          "_token": "{{ csrf_token() }}"
+        },
+        dataType: "json",
+        success: function success(data) {
+          if (data) {
+            $('#ruangan').empty();
+            $.each(data, function (key, ruangan) {
+              $('select[name="ruangan"]').append('<option value="' + ruangan.ruangan + '">' + ruangan.ruangan + '</option>');
+            });
+          } else {
+            $('#ruangan').empty();
+          }
+        }
+      });
+    } else {
+      $('#ruangan').empty();
+    }
+  });
 });
 
 /***/ }),

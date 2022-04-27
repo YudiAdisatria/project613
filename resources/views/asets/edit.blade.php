@@ -52,10 +52,11 @@
                             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
                                 Gedung
                             </label>
-                            <select name="gedung" class="appearance-none block w-full bg-white text-gray-700 border border-gray-100 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name">
-                                <option value="{{ $item->gedung}}">{{ $item->gedung }}</option>
-                                <option value="HC">Henri</option>
-                                <option value="Anto">Anto</option>
+                            <select name="gedung" id="gedung" class="appearance-none block w-full bg-white text-gray-700 border border-gray-100 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+                                <option value="{{ $item->gedung }}">{{ $item->gedung }}</option>
+                                @foreach($ruangan as $item)
+                                <option value="{{ $item }}">{{ $item }}</option>
+                                @endforeach
                             </select>
                         </div>
                                     
@@ -63,10 +64,8 @@
                             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
                                 Ruangan
                             </label>
-                            <select name="ruangan" class="appearance-none block w-full bg-white text-gray-700 border border-gray-100 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name">
-                                <option value="{{ $item->ruangan}}">{{ $item->ruangan }}</option>
-                                <option value="01">Ruang A</option>
-                                <option value="02">ruang B</option>
+                            <select name="ruangan" id="ruangan" placeholder="Pilih Ruangan" class="appearance-none block w-full bg-white text-gray-700 border border-gray-100 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+                                <option value="{{ $item->ruangan }}">{{ $item->ruangan }}</option>
                             </select>
                         </div> 
                     </div>
