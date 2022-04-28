@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            Aset &raquo; {!! $item->nama_aset !!} &raquo; Edit
+            Aset &raquo; {!! $item->nama_aset !!} &raquo; Jual
         </h2>
     </x-slot>
 

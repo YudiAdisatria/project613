@@ -54,8 +54,8 @@
                             </label>
                             <select name="gedung" id="gedung" class="appearance-none block w-full bg-white text-gray-700 border border-gray-100 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
                                 <option value="{{ $item->gedung }}">{{ $item->gedung }}</option>
-                                @foreach($ruangan as $item)
-                                <option value="{{ $item }}">{{ $item }}</option>
+                                @foreach($ruangan as $rua)
+                                <option value="{{ $rua->gedung }}">{{ $rua->gedung }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -77,7 +77,7 @@
                                 Kategori
                             </label>
                             <select name="id_kategori" class="appearance-none block w-full bg-white text-gray-700 border border-gray-100 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name">
-                                    <option value="{{ $item->id_kategori}}">{{ $item->id_kategori }}</option>
+                                <option value="{{ $item->id_kategori }}">{{ $item->id_kategori }}</option>
                                 @forelse ($kategori as $kat)
                                     <option value="{{ $kat->id_kategori }}">{{ $kat->nama_kategori }}</option>
                                 @empty
@@ -92,7 +92,7 @@
                                 Kondisi
                             </label>
                             <select name="kondisi" class="appearance-none block w-full bg-white text-gray-700 border border-gray-100 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name">
-                                <option value="{{ $item->kondisi}}">{{ $item->kondisi }}</option>
+                                <option value="{{ $item->kondisi }}">{{ $item->kondisi }}</option>
                                 <option value="baik">Baik</option>
                                 <option value="rusak">rusak</option>
                             </select>
@@ -143,7 +143,6 @@
                             </button>
                         </div>
                     </div>
-                    
                 </form>
             </div>
         </div>

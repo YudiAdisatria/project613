@@ -98,7 +98,7 @@ class AsetController extends Controller
     {
         $edit = Aset::where('id_aset', '=', $id)->get();
         $kategori = Kategori::get();
-        $ruangan = Ruangan::get('gedung')->groupBy('gedung');
+        $ruangan = Ruangan::groupBy('gedung')->get('gedung');
         
         return view('asets.edit', [
             'item' => $edit[0],

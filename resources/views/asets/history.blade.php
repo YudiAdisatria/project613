@@ -5,7 +5,7 @@
         </h2>
     </x-slot>
 
-    <section class=" bg-gray-200 pt-36 pb-36">
+    <section class=" bg-gray-200 pt-8 pb-8">
         <div class="container relative">
             <div class="self-end px-2 text-right mb-2">
                 <p class="text-xs">untuk nama pemindah gunakan nomor HP pemindah </p>

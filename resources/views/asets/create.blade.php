@@ -62,6 +62,7 @@
                                 Gedung
                             </label>
                             <select name="gedung" id="gedung" class="appearance-none block w-full bg-white text-gray-700 border border-gray-100 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+                                    <option label>Pilih Gedung</option>
                                 @foreach($ruangan as $key => $value)
                                     <option value="{{ $key }}">{{ $key }}</option>
                                 @endforeach
