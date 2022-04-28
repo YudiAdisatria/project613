@@ -43,8 +43,8 @@
                             <td class="p-3 text-sm text-blue-500 font-bold ">{{ $item->id_kategori }}</td>
                             <td>{{ $item->nama_kategori }}</td>
                             <td>
-                                <div>
-                                    <img src="{{ $item->foto_kategori }}" class="w-full h-56" alt="">
+                                <div class="bg-transparent  mb-2 mt-2 ">
+                                    <img src="{{ $item->foto_kategori }}" class="w-48 h-36" alt="">
                                 </div> 
                             </td>
                             <td class="text-sm">

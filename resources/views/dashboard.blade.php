@@ -16,7 +16,7 @@
                 </div>
                 <div class="w-full self-end px-2 lg:w-1/2">
                     <div class="relative mt-8 mb-10 lg:mt-2 ">
-                        <img src="logo-atmodirono.png" alt="gereja atmodirono" class="max-w-full mx-auto"/>
+                        <img src="{{ asset('storage/assets/logo-atmodirono.png') }}" alt="gereja atmodirono" class="max-w-full mx-auto"/>
                     </div>
                 </div>
             </div>
@@ -62,7 +62,7 @@
 
                 <div class="w-full px-4 lg:w-1/2 xl:w-1/3">
                     <div class="bg-blue-600 rounded-xl shadow-lg overflow-hidden mb-10">
-                        <img src="Capture3.png" alt="Music" class="w-full h-56" />
+                        <img src="{{ asset('storage/assets/pindah-aset.png') }}" alt="Music" class="w-full h-56" />
                         <div class="py-8 px-6">
                             <h3 class="mb-3 font-semibold text-xl text-white text-center">Pindah Aset</h3>
                             <p class="tracking-tight font-medium text-base text-white mb-6 text-justify">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Necessitatibus, aliquid!</p>
@@ -73,7 +73,7 @@
 
                 <div class="w-full px-4 lg:w-1/2 xl:w-1/3">
                     <div class="bg-blue-600 rounded-xl shadow-lg overflow-hidden mb-10">
-                        <img src="Capture3.png" alt="Music" class="w-full h-56" />
+                        <img src="{{ asset('storage/assets/plus.jpg') }}" alt="Music" class="w-full h-56" />
                         <div class="py-8 px-6">
                             <h3 class="mb-3 font-semibold text-xl text-white text-center">Tambah Aset</h3>
                             <p class="tracking-tight font-medium text-base text-white mb-6 text-justify">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Necessitatibus, aliquid!</p>
@@ -84,7 +84,7 @@
 
                 <div class="w-full px-4 lg:w-1/2 xl:w-1/3">
                     <div class="bg-blue-600 rounded-xl shadow-lg overflow-hidden mb-10">
-                        <img src="Capture3.png" alt="Music" class="w-full h-56" />
+                        <img src="{{ asset('storage/assets/jual.png') }}" alt="Music" class="w-full h-56" />
                         <div class="py-8 px-6">
                             <h3 class="mb-3 font-semibold text-xl text-white text-center">Jual Aset</h3>
                             <p class="tracking-tight font-medium text-base text-white mb-6 text-justify">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Necessitatibus, aliquid!</p>
