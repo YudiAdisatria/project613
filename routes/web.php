@@ -27,6 +27,9 @@ Route::prefix('dashboard')
     ->middleware(['auth:sanctum', 'admin'])
     ->group(function() {
         Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+        Route::get('/qr', function(){
+            return view('asets.qrcode');
+        });
         Route::resource('users', UserController::class);
         Route::resource('kategoris', KategoriController::class);
         Route::get('asets/{id}/jual', [AsetController::class, 'jual'])->name('asets.jual');
