@@ -4732,6 +4732,7 @@ hambuger.addEventListener('click', function () {
 $(document).ready(function () {
   $('#gedung').on('change', function () {
     var ruanganID = $(this).val();
+    console.log(ruanganID);
     $('#ruangan').empty();
     $('#ruangan').append('<option label> Processing </option>');
 

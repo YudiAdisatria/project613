@@ -85,7 +85,12 @@ class AsetController extends Controller
      */
     public function show($id)
     {
-       //
+        $edit = Aset::with(['kategori'])
+            ->where('id_aset', '=', $id)->get();
+
+        return view('asets.show', [
+            'item' => $edit[0],
+        ]);
     }
 
     /**
