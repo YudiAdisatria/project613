@@ -70,7 +70,11 @@ class AsetController extends Controller
         $data['edited_by'] = auth()->user()['noHp'];
 
         if($request->file('foto_aset')){
+            //$data['foto_aset'] = $request->file('foto_aset')->store('assets/aset', 'public');
             $data['foto_aset'] = $request->file('foto_aset')->store('assets/aset', 'public');
+            
+            //Compress Image Code Here
+            AsetController::compress($data['foto_aset']);
         }
         Aset::create($data);
 
@@ -128,6 +132,9 @@ class AsetController extends Controller
 
         if($request->file('foto_aset')){
             $data['foto_aset'] = $request->file('foto_aset')->store('assets/aset', 'public');
+
+            //Compress Image Code Here
+            AsetController::compress($data['foto_aset']);
             
             //remove URL/storage from getAttribute model foto
             $temp = URL::to('/')."/storage/";
@@ -213,5 +220,35 @@ class AsetController extends Controller
 
         return redirect()->route('asets.index'); 
         */
+    }
+
+    public function compress($path){
+        $filepath = public_path(Storage::url($path));
+        $mime = mime_content_type($filepath);
+        $output = new \CURLFile($filepath, $mime, $filepath);
+        $photo = ["files" => $output];
+        
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, 'http://api.resmush.it/?qlty=70');
+        curl_setopt($ch, CURLOPT_POST,1);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 15);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $photo);
+        $result = curl_exec($ch);
+        if (curl_errno($ch)) {
+            $result = curl_error($ch);
+        }
+        curl_close ($ch);
+        
+        $arr_result = json_decode($result);
+        
+        // store the optimized version of the image
+        $ch = curl_init($arr_result->dest);
+        $fp = fopen($filepath, 'wb');
+        curl_setopt($ch, CURLOPT_FILE, $fp);
+        curl_setopt($ch, CURLOPT_HEADER, 0);
+        curl_exec($ch);
+        curl_close($ch);
+        fclose($fp);
     }
 }

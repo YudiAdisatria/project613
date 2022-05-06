@@ -65,6 +65,8 @@ class KategoriController extends Controller
 
         if($request->file('foto_kategori')){
             $data['foto_kategori'] = $request->file('foto_kategori')->store('assets/kategori', 'public');
+            //Compress Image Code Here
+            KategoriController::compress($data['foto_kategori']);
         }
         Kategori::create($data);
 
@@ -119,6 +121,9 @@ class KategoriController extends Controller
         if($request->file('foto_kategori')){
             $data['foto_kategori'] = $request->file('foto_kategori')->store('assets/kategori', 'public');
             
+            //Compress Image Code Here
+            KategoriController::compress($data['foto_kategori']);
+            
             //remove URL/storage from getAttribute model foto
             $temp = URL::to('/')."/storage/";
             $temp1 = Str::remove($temp, $kategori[0]['foto_kategori']);
@@ -155,5 +160,35 @@ class KategoriController extends Controller
                 ->update(['updated_at' => Carbon::now(), 'deleted_at' => Carbon::now()]);
 
         return redirect()->route('kategoris.index');
+    }
+
+    public function compress($path){
+        $filepath = public_path(Storage::url($path));
+        $mime = mime_content_type($filepath);
+        $output = new \CURLFile($filepath, $mime, $filepath);
+        $photo = ["files" => $output];
+        
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, 'http://api.resmush.it/?qlty=70');
+        curl_setopt($ch, CURLOPT_POST,1);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 15);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $photo);
+        $result = curl_exec($ch);
+        if (curl_errno($ch)) {
+            $result = curl_error($ch);
+        }
+        curl_close ($ch);
+        
+        $arr_result = json_decode($result);
+        
+        // store the optimized version of the image
+        $ch = curl_init($arr_result->dest);
+        $fp = fopen($filepath, 'wb');
+        curl_setopt($ch, CURLOPT_FILE, $fp);
+        curl_setopt($ch, CURLOPT_HEADER, 0);
+        curl_exec($ch);
+        curl_close($ch);
+        fclose($fp);
     }
 }

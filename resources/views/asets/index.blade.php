@@ -42,7 +42,7 @@
                     <tbody>
                         @forelse ($aset as $item)
                         <tr class="odd:bg-white even:bg-slate-100">
-                            <td class="p-3 text-sm text-blue-500 font-bold ">{{ $item->id_aset }}</td>
+                            <td class="p-3 text-sm text-blue-500 font-bold "><a href="{{ route('asets.show', $item->id_aset ) }}">{{ $item->id_aset }}</a></td>
                             <td>{{ $item->nama_aset }}</td>
                             <td>{{ $item->kategori->nama_kategori }}</td>
                             <td>{{ $item->gedung }}, {{ $item->ruangan }}</td>
