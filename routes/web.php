@@ -33,6 +33,7 @@ Route::prefix('dashboard')
         Route::resource('users', UserController::class);
         Route::resource('kategoris', KategoriController::class);
         Route::get('asets/{id}/jual', [AsetController::class, 'jual'])->name('asets.jual');
+        Route::get('asets/{id}/qr', [AsetController::class, 'qr'])->name('asets.qr');
         Route::put('asets/{id}/save', [AsetController::class, 'save'])->name('asets.save');
         Route::resource('asets', AsetController::class);
         Route::resource('ruangans', RuanganController::class);

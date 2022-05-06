@@ -8,9 +8,11 @@ use App\Models\Ruangan;
 use App\Models\Kategori;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use App\Http\Requests\AsetRequest;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Storage;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class AsetController extends Controller
 {
@@ -220,6 +222,19 @@ class AsetController extends Controller
 
         return redirect()->route('asets.index'); 
         */
+    }
+
+    public function qr($id)
+    {
+        $aset = Aset::where('id_aset', $id)->get();
+        $data = 'dashboard/asets/'.$id;
+        $qr = QrCode::size(350)->generate($data);
+
+        return view('asets.barcode', [
+            'item' => $aset[0],
+            'qr' => $qr
+        ]);
+
     }
 
     public function compress($path){
