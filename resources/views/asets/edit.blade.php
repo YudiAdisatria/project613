@@ -77,9 +77,9 @@
                                 Kategori
                             </label>
                             <select name="id_kategori" class="appearance-none block w-full bg-white text-gray-700 border border-gray-100 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name">
-                                <option value="{{ $item->id_kategori }}">{{ $item->id_kategori }}</option>
+                                <option value="{{ $item->id_kategori }}">{{ $item->id_kategori }} - {{ $item->id_kategori }}</option>
                                 @forelse ($kategori as $kat)
-                                    <option value="{{ $kat->id_kategori }}">{{ $kat->nama_kategori }}</option>
+                                    <option value="{{ $kat->id_kategori }}">{{ $kat->id_kategori }} - {{ $kat->nama_kategori }}</option>
                                 @empty
                                     <p>tidak ada kategori</p>
                                 @endforelse

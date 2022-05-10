@@ -52,7 +52,7 @@ class AsetController extends Controller
      */
     public function create()
     {
-        $kategori = Kategori::get();
+        $kategori = Kategori::orderByRaw("RIGHT(id_kategori, 1)")->get();
         $ruangan = Ruangan::get('gedung')->groupBy('gedung');
         return view('asets.create', [
             'kategori' => $kategori,
@@ -108,7 +108,7 @@ class AsetController extends Controller
     public function edit($id)
     {
         $edit = Aset::where('id_aset', '=', $id)->get();
-        $kategori = Kategori::get();
+        $kategori = Kategori::orderByRaw("RIGHT(id_kategori, 1)")->get();
         $ruangan = Ruangan::groupBy('gedung')->get('gedung');
         
         return view('asets.edit', [
@@ -175,7 +175,7 @@ class AsetController extends Controller
     public function jual($id)
     {
         $edit = Aset::where('id_aset', '=', $id)->get();
-        $kategori = Kategori::get();
+        $kategori = Kategori::orderByRaw("RIGHT(id_kategori, 1)")->get();
 
         return view('asets.jual', [
             'item' => $edit[0],
