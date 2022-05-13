@@ -52,6 +52,11 @@
                                         </li>
                                         @endcan
                                         <li class="group">
+                                            <a href="{{ route('qrcode') }}" class="text-base font-bold text-blue-600  py-2 mx-8 flex group-hover:text-teal-300">
+                                                Scan QR
+                                            </a>
+                                        </li>
+                                        <li class="group">
                                             <p class="text-base font-bold text-blue-600  py-2 mx-8 flex group-hover:text-teal-300">
                                             
                                             </p>

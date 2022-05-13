@@ -76,7 +76,7 @@ class AsetController extends Controller
             $data['foto_aset'] = $request->file('foto_aset')->store('assets/aset', 'public');
             
             //Compress Image Code Here
-            AsetController::compress($data['foto_aset']);
+            //AsetController::compress($data['foto_aset']);
         }
         Aset::create($data);
 
@@ -136,7 +136,7 @@ class AsetController extends Controller
             $data['foto_aset'] = $request->file('foto_aset')->store('assets/aset', 'public');
 
             //Compress Image Code Here
-            AsetController::compress($data['foto_aset']);
+            //AsetController::compress($data['foto_aset']);
             
             //remove URL/storage from getAttribute model foto
             $temp = URL::to('/')."/storage/";

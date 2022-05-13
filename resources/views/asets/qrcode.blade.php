@@ -1,5 +1,7 @@
 <x-app-layout>
-    <div id="reader" width="300px" class="mt-10"></div>
+    <div class="container">
+        <div id="reader" width="300px" class="mt-10"></div>
+    </div>
     <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
     <script>
         function onScanSuccess(decodedText, decodedResult) {
