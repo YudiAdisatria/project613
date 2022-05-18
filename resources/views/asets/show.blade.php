@@ -66,7 +66,9 @@
                                 </div>
 
                                 <div class="w-full px-4">
-                                    <button class="text-base font-semibold text-white bg-blue-800 py-3 px-8 rounded-full w-full">Pindah</button>
+                                    <button class="text-base font-semibold text-white bg-blue-800 py-3 px-8 rounded-full w-full">
+                                        <a href="{{ route('asets.edit', $item->id_aset) }}">Pindah</a>    
+                                    </button>
                                 </div>
                             </div>
             

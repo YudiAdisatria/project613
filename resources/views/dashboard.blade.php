@@ -1,12 +1,14 @@
 <x-app-layout>
     <!--Hero Section start-->
-    <section id="home" class="pt-36 bg-white">
+    <section id="home" class="pt-8 bg-white">
         <div class="container">
             <div class="flex flex-wrap">
                 <div class="w-full self-center px-4 lg:w-1/2">
                     <h1 class="block font-bold text-blue-800 text-2xl mt-1 lg:text-4xl"> Aset Paroki Atmodirono</h1>
                     <h1 class="block font-bold text-blue-800 text-2xl mt-1 lg:text-4xl mb-10">Semarang</h1>
-                    <p class="font-medium text-slate-400 mb-10 mr-5 leading-relaxed">Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque, nesciunt soluta culpa repellendus nulla modi sequi ab nisi, quia incidunt aliquid?</p>
+                    <p class="font-medium text-slate-400 mb-10 mr-5 leading-relaxed">
+                        Website manajemen aset Gereja Atmodiromo Semarang
+                    </p>
                     @auth
                     @else
                         <a href="{{ route('login') }}" class="text-base font-semibold text-white bg-blue-600 py-3 px-8 rounded-full hover:shadow-lg hover:bg-teal-300 ease-in-out">
@@ -51,22 +53,23 @@
 
                 <div class="w-full px-4 lg:w-1/2 xl:w-1/3">
                     <div class="bg-blue-600 rounded-xl shadow-lg overflow-hidden mb-10">
-                        <img src="Capture3.png" alt="Class" class="w-full h-56" />
-                        <div class="py-8 px-6">
-                            <h3 class="mb-3 font-semibold text-xl text-white text-center">Ruangan</h3>
-                            <p class="tracking-tight font-medium text-base text-white mb-6 text-justify">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Necessitatibus, aliquid!</p>
-                            <p class="text-center"><a href="ruangan.html" class="items-center text-sm text-black bg-teal-300 font-bold py-2 px-4 rounded-lg hover:opacity-80 mr-50">Lihat Disini</a></p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="w-full px-4 lg:w-1/2 xl:w-1/3">
-                    <div class="bg-blue-600 rounded-xl shadow-lg overflow-hidden mb-10">
                         <img src="{{ asset('storage/assets/pindah-aset.png') }}" alt="Music" class="w-full h-56" />
                         <div class="py-8 px-6">
                             <h3 class="mb-3 font-semibold text-xl text-white text-center">Pindah Aset</h3>
                             <p class="tracking-tight font-medium text-base text-white mb-6 text-justify">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Necessitatibus, aliquid!</p>
                             <p class="text-center"><a href="pindah_web.html" class="items-center font-bold text-sm text-dark bg-teal-300 py-2 px-4 rounded-lg hover:opacity-80 mr-50">Pindah Disini</a></p>
+                        </div>
+                    </div>
+                </div>
+
+                @can('manage-user')
+                <div class="w-full px-4 lg:w-1/2 xl:w-1/3">
+                    <div class="bg-blue-600 rounded-xl shadow-lg overflow-hidden mb-10">
+                        <img src="Capture3.png" alt="Class" class="w-full h-56" />
+                        <div class="py-8 px-6">
+                            <h3 class="mb-3 font-semibold text-xl text-white text-center">Ruangan</h3>
+                            <p class="tracking-tight font-medium text-base text-white mb-6 text-justify">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Necessitatibus, aliquid!</p>
+                            <p class="text-center"><a href="ruangan.html" class="items-center text-sm text-black bg-teal-300 font-bold py-2 px-4 rounded-lg hover:opacity-80 mr-50">Lihat Disini</a></p>
                         </div>
                     </div>
                 </div>
@@ -92,8 +95,7 @@
                         </div>
                     </div>
                 </div>
-                
-
+                @endcan
             </div>
         </div>
     </section>
