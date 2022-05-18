@@ -96,7 +96,7 @@
                             </label>
                             <select name="kondisi" class="appearance-none block w-full bg-white text-gray-700 border border-gray-100 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name">
                                 <option value="baik">Baik</option>
-                                <option value="rusak">rusak</option>
+                                <option value="rusak">Rusak</option>
                             </select>
                         </div>
 
@@ -118,7 +118,8 @@
                             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
                                 Foto
                             </label>
-                            <input name="foto_aset" class="appearance-none block w-full bg-white text-gray-700 border border-gray-100 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="file" placeholder="Foto KAtegori" accept="image/*" required>
+                            <p class="text-dark text-xs">Ukuran maksimal 2 MB</p>
+                            <input name="foto_aset" id="foto_aset" class="appearance-none block w-full bg-white text-gray-700 border border-gray-100 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="file" placeholder="Foto" accept="image/*" required>
                         </div>
                     </div>
 

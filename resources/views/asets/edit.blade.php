@@ -43,7 +43,13 @@
                             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
                                 nama aset
                             </label>
+                            @can('manage-user')
                             <input value="{{ old('nama_aset') ?? $item->nama_aset }}" name="nama_aset" class="appearance-none block w-full bg-white text-gray-700 border border-gray-100 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="text" placeholder="Nama Aset" required>
+                            @endcan
+                            @can('hanya-user')
+                            <input disabled value="{{ old('nama_aset') ?? $item->nama_aset }}" name="nama_aset" class="appearance-none block w-full bg-white text-gray-700 border border-gray-100 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="text" placeholder="Nama Aset" required>
+                            <input value="{{ old('nama_aset') ?? $item->nama_aset }}" name="nama_aset" class="appearance-none block w-full bg-white text-gray-700 border border-gray-100 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="hidden" placeholder="Nama Aset" required>
+                            @endcan
                         </div>  
                     </div>
 
@@ -117,13 +123,31 @@
                     @endcan
 
                     <div class="flex flex-wrap mt-2">
+                        @can('hanya-user')
+                        <div class="w-full  self-center mt-2 px-3 lg:w-1/2">
+                        @endcan
+                        @can('manage-user')
                         <div class="w-full px-3">
+                        @endcan
                             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
                                 Keterangan
                             </label>
                             <p class="text-dark text-xs">isi dengan - apabila tidak ada keterangan</p>
                             <input value="{{ old('keterangan') ?? $item->keterangan }}" name="keterangan" class="appearance-none block w-full bg-white text-gray-700 border border-gray-100 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="text" placeholder="Keterangan" required>
                         </div>
+                        @can('hanya-user')
+                        <div class="w-full  self-center mt-2 px-3 lg:w-1/2">
+                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
+                                Kondisi
+                            </label>
+                            <p class="text-dark text-xs pt-4"></p>
+                            <select name="kondisi" class="appearance-none block w-full bg-white text-gray-700 border border-gray-100 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name">
+                                <option value="{{ $item->kondisi }}">{{ $item->kondisi }}</option>
+                                <option value="baik">Baik</option>
+                                <option value="rusak">rusak</option>
+                            </select>
+                        </div>  
+                        @endcan
                     </div>
                    
 
@@ -132,7 +156,8 @@
                             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
                                 Foto Aset
                             </label>
-                            <input name="foto_aset" class="appearance-none block w-full bg-white text-gray-700 border border-gray-100 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="file" placeholder="Foto Aset" accept="image/*">
+                            <p class="text-dark text-xs">Ukuran maksimal 2 MB</p>
+                            <input name="foto_aset" class="appearance-none block w-full bg-white text-gray-700 border border-gray-100 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="foto-upload" type="file" placeholder="Foto Aset" accept="image/*" max-file-size="2097152">
                         </div>
                     </div>
 

@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Http\Requests\AsetRequest;
 use Illuminate\Support\Facades\URL;
+use Illuminate\Validation\Validator;
 use Illuminate\Support\Facades\Storage;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
@@ -25,19 +26,24 @@ class AsetController extends Controller
     {
 
         if(request('search')){
+            $kategori = Kategori::Where('nama_kategori', 'like', '%'. request('search') . '%')->get('id_kategori');
+            if(!empty($kategori[0])){
+                $kategori = $kategori[0]->id_kategori;
+            }
             $aset = Aset::with(['kategori'])
                 ->where('id_aset', 'like', '%'. request('search') . '%')
                 ->orWhere('nama_aset', 'like', '%'. request('search') . '%')
                 ->orWhere('gedung', 'like', '%'. request('search') . '%')
                 ->orWhere('ruangan', 'like', '%'. request('search') . '%')
-                ->paginate(15);
-            
+                ->orWhere('id_kategori', 'like', '%'. $kategori . '%')
+                ->paginate(50);
+
             return view('asets.index', [
                 'aset' => $aset
             ]);
         }
 
-        $aset = Aset::with(['kategori'])->paginate(5);
+        $aset = Aset::with(['kategori'])->paginate(50);
 
         // return $aset[0];
         return view('asets.index', [
@@ -72,6 +78,9 @@ class AsetController extends Controller
         $data['edited_by'] = auth()->user()['noHp'];
 
         if($request->file('foto_aset')){
+            $this->validate($request, [
+                'foto_aset' => 'image|file|max:2048',
+            ]);
             //$data['foto_aset'] = $request->file('foto_aset')->store('assets/aset', 'public');
             $data['foto_aset'] = $request->file('foto_aset')->store('assets/aset', 'public');
             
@@ -133,6 +142,10 @@ class AsetController extends Controller
         $aset = Aset::where('id_aset', '=', $id)->get();
 
         if($request->file('foto_aset')){
+            $this->validate($request, [
+                'foto_aset' => 'image|file|max:2048',
+            ]);
+
             $data['foto_aset'] = $request->file('foto_aset')->store('assets/aset', 'public');
 
             //Compress Image Code Here

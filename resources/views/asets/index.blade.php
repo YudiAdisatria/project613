@@ -25,7 +25,7 @@
                     </form>
                 </div>
             </div>
-
+            <p>Total Aset dalam pencarian : {{ $aset->total() }}</p>
             <div class="overflow-auto rounded-lg shadow hidden md:block">
                 <table class="w-full" id="myTable" data-filter-control="true" data-show-search-clear-button="true">
                     <thead class="bg-gray-50 border-b-2 border-gray-200">
@@ -83,7 +83,7 @@
                         </div>
 
                         <div class="flex justify-center items-center text-sm text-center">
-                            <div class=" font-semibold p-3 text-sm text-black text-center">{{ $item->gedung }}</div>
+                            <div class=" font-semibold p-3 text-sm text-black text-center">{{ $item->gedung }}, {{ $item->ruangan }}</div>
                         </div>
 
                         <div class="flex justify-center items-center space-x-2 text-sm">

@@ -32,6 +32,9 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('manage-pindah', function (User $user) {
             return $user->roles == "ADMIN" || $user->roles == "USER";
         });
+        Gate::define('hanya-user', function (User $user) {
+            return $user->roles == "USER";
+        });
 
     }
 }
