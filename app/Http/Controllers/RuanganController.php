@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use Carbon\Carbon;
 use App\Models\Ruangan;
 use Illuminate\Http\Request;
-use App\Http\Requests\RuanganRequest;
+use App\Exports\RuanganExport;
 use Illuminate\Support\Facades\Gate;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Http\Requests\RuanganRequest;
 
 class RuanganController extends Controller
 {
@@ -122,5 +124,12 @@ class RuanganController extends Controller
             ->update(['updated_at' => Carbon::now(), 'deleted_at' => Carbon::now()]);
 
         return redirect()->route('ruangans.index');
+    }
+
+    public function export() 
+    {
+        $ruangan = request('ruangan');
+        date_default_timezone_set('Asia/Jakarta');
+        return Excel::download(new RuanganExport($ruangan), date('d-m-Y')." ".$ruangan.'.xlsx');
     }
 }

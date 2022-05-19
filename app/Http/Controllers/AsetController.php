@@ -234,7 +234,6 @@ class AsetController extends Controller
             'item' => $aset[0],
             'qr' => $qr
         ]);
-
     }
 
     public function compress($path){

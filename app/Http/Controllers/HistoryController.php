@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\History;
+use Illuminate\Http\Request;
+use App\Exports\HistoriesExport;
 use Illuminate\Support\Facades\Gate;
 
 class HistoryController extends Controller
@@ -105,5 +106,12 @@ class HistoryController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function export() 
+    {
+        $tanggal = request('tanggal');
+        date_default_timezone_set('Asia/Jakarta');
+        return Excel::download(new HistoriesExport($tanggal), date('m-Y')." pindah jual".'.xlsx');
     }
 }

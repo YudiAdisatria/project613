@@ -30,13 +30,20 @@ Route::prefix('dashboard')
         Route::get('/qr', function(){
             return view('asets.qrcode');
         })->name('qrcode');
+
         Route::resource('users', UserController::class);
         Route::resource('kategoris', KategoriController::class);
+
+        /* EDITAN ROUTE CUSTOM HARUS DIATAS RESOURCE */
         Route::get('asets/{id}/jual', [AsetController::class, 'jual'])->name('asets.jual');
         Route::get('asets/{id}/qr', [AsetController::class, 'qr'])->name('asets.qr');
         Route::put('asets/{id}/save', [AsetController::class, 'save'])->name('asets.save');
         Route::resource('asets', AsetController::class);
+        
+        Route::get('ruangans/export', [RuanganController::class, 'export'])->name('ruangans.export');
         Route::resource('ruangans', RuanganController::class);
+
+        Route::get('histories/export', [HistoryController::class, 'export'])->name('histories.export');
         Route::resource('histories', HistoryController::class);
     });
 
