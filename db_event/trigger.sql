@@ -8,7 +8,7 @@ BEFORE INSERT ON asets FOR EACH ROW
 BEGIN
     DECLARE tempKode VARCHAR(15);
     DECLARE tempCount INT DEFAULT 0;
-    DECLARE i INT DEFAULT 1;
+    DECLARE i INT;
 
     SET tempKode := CONCAT(NEW.id_aset, NEW.id_kategori);
     SELECT COUNT(id_aset) INTO tempCount FROM asets WHERE LEFT(id_aset,6) = tempKode;
