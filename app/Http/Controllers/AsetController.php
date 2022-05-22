@@ -24,7 +24,10 @@ class AsetController extends Controller
      */
     public function index()
     {
+        $kategori = Kategori::orderByRaw("RIGHT(id_kategori, 1)")->get();
+        $ruangan = Ruangan::get('gedung')->groupBy('gedung');
 
+        // If using Search
         if(request('search')){
             $kategori = Kategori::Where('nama_kategori', 'like', '%'. request('search') . '%')->get('id_kategori');
             if(!empty($kategori[0])){
@@ -39,7 +42,30 @@ class AsetController extends Controller
                 ->paginate(50);
 
             return view('asets.index', [
-                'aset' => $aset
+                'aset' => $aset,
+                'kategori' => $kategori,
+                'ruangan' => $ruangan 
+            ]);
+        }
+
+        // If using filter
+        if(request('filter')){
+            $ged = (request('gedung')==NULL) ? '' : request('gedung');
+            $rua = (request('ruangan')==NULL) ? '' : request('ruangan');
+            $kon = (request('kondisi')==NULL) ? '' : request('kondisi');
+            $kat = (request('id_kategori')==NULL) ? '' : request('id_kategori');
+
+            $aset = Aset::with(['kategori'])
+                ->where('gedung', 'like', '%'. $ged . '%')
+                ->where('ruangan', 'like', '%'. $rua . '%')
+                ->where('kondisi', 'like', '%'. $kon . '%')
+                ->where('id_kategori', 'like', '%'. $kat . '%')
+                ->paginate(50);
+
+            return view('asets.index', [
+                'aset' => $aset,
+                'kategori' => $kategori,
+                'ruangan' => $ruangan 
             ]);
         }
 
@@ -47,7 +73,9 @@ class AsetController extends Controller
 
         // return $aset[0];
         return view('asets.index', [
-            'aset' => $aset
+            'aset' => $aset,
+            'kategori' => $kategori,
+            'ruangan' => $ruangan 
         ]);
     }
 

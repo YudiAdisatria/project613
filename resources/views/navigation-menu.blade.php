@@ -20,11 +20,6 @@
                                 <nav id="nav-menu" class="hidden absolute py-5 bg-white shadow-lg rounded-lg max-w-[250px] w-full right-4 top-full lg:block lg:static lg:bg-transparent lg:max-w-full lg:shadow-none lg:rounded-none">
                                     <ul class="block lg:flex">
                                         <li class="group">
-                                            <a href="{{ route('dashboard') }}" class="text-base font-bold text-blue-600 py-2 mx-8 flex group-hover:text-teal-400">
-                                                Beranda
-                                            </a>
-                                        </li>
-                                        <li class="group">
                                             <a href="{{ route('asets.index') }}" class="text-base font-bold text-blue-600  py-2 mx-8 flex group-hover:text-teal-300">
                                                 List Aset
                                             </a>
@@ -46,8 +41,8 @@
                                             </a>
                                         </li>
                                         <li class="group">
-                                            <a href="{{ route('histories.index') }}" class="text-base font-bold text-blue-600  py-2 mx-8 flex group-hover:text-teal-300">
-                                                History
+                                            <a href="{{ route('lain.index') }}" class="text-base font-bold text-blue-600  py-2 mx-8 flex group-hover:text-teal-300">
+                                                Lain-Lain
                                             </a>
                                         </li>
                                         @endcan

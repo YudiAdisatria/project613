@@ -25,18 +25,6 @@
                     </form>
                 </div>
             </div>
-            <div class="flex flex-wrap">
-                <div class="w-full self-center px-4 lg:w-1/2">
-                </div>
-                <div class="self-end px-2 lg:w-1/2">
-                    <form action="{{ route('ruangans.export') }}" class="mb-3 flex">
-                        <input type="text" placeholder="Ketikan nama ruangan jangan sampai typo" name="ruangan" class="placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm mr-4">
-                        <button type="submit" class="bg-black text-white py-1 px-3 border border-black hover:border-white rounded">
-                            Laporan
-                        </button>
-                    </form>
-                </div>
-            </div>
 
             <div class="overflow-auto rounded-lg shadow hidden md:block">
                 <table class="w-full" id="myTable" data-filter-control="true" data-show-search-clear-button="true">

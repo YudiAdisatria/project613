@@ -2,10 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AsetController;
+use App\Http\Controllers\LainController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\RuanganController;
 use App\Http\Controllers\KategoriController;
-use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\DashboardController;
 
 /*
@@ -45,5 +46,7 @@ Route::prefix('dashboard')
 
         Route::get('histories/export', [HistoryController::class, 'export'])->name('histories.export');
         Route::resource('histories', HistoryController::class);
+
+        Route::resource('lain', LainController::class);
     });
 

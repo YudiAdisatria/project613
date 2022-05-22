@@ -25,6 +25,47 @@
                     </form>
                 </div>
             </div>
+
+            <!-- Filter custom -->
+            <div class="overflow-auto shadow hidden md:block">
+                <form action="{{ route('asets.index') }}" class="flex flex-wrap mb-5">
+                    {{-- <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
+                        Filter
+                    </label> --}}
+                    <input type="hidden" name="filter" value="1">
+                    <select name="id_kategori" class=" mr-24 mb-3 md:mb-0 text-black bg-white hover:bg-gray-100 font-medium text-sm px-12 py-2.5 text-center inline-flex items-center" id="grid-last-name">
+                        <option value="" selected>Kategori</option>
+                        @forelse ($kategori as $kat)
+                            <option value="{{ $kat->id_kategori }}">{{ $kat->nama_kategori }}</option>
+                        @empty
+                            <p>tidak ada kategori</p>
+                        @endforelse
+                    </select>
+
+                    <select name="gedung" id="gedung" class="mr-20 mb-3 md:mb-0 text-black bg-white hover:bg-gray-100 font-medium text-sm px-12 py-2.5 text-center inline-flex items-center" id="grid-last-name">
+                        <option value="" selected>Gedung</option>
+                        @foreach($ruangan as $key => $value)
+                            <option value="{{ $key }}">{{ $key }}</option>
+                        @endforeach
+                    </select>
+
+                    <select name="ruangan" id="ruangan" class="mr-12 mb-3 md:mb-0 text-black bg-white hover:bg-gray-100 font-medium text-sm px-12 py-2.5 text-center inline-flex items-center" id="grid-last-name">
+                        <option value="" selected>Ruangan</option>
+                    </select>
+
+                    <select name="kondisi" class="mr-12 mb-3 md:mb-0 text-black bg-white hover:bg-gray-100 font-medium text-sm px-12 py-2.5 text-center inline-flex items-center" id="grid-last-name">
+                        <option value="" selected>Kondisi</option>
+                        <option value="baik">Baik</option>
+                        <option value="rusak">Rusak</option>
+                        <option value="hilang">Hilang</option>
+                    </select>
+
+                    <button type="submit" class="bg-black text-white py-1 px-3 border border-black hover:border-white rounded">
+                        Apply Filter
+                    </button>
+                </form>
+            </div>
+
             <p>Total Aset dalam pencarian : {{ $aset->total() }}</p>
             <div class="overflow-auto rounded-lg shadow hidden md:block">
                 <table class="w-full" id="myTable" data-filter-control="true" data-show-search-clear-button="true">

@@ -66,7 +66,7 @@ class KategoriController extends Controller
         if($request->file('foto_kategori')){
             $data['foto_kategori'] = $request->file('foto_kategori')->store('assets/kategori', 'public');
             //Compress Image Code Here
-            KategoriController::compress($data['foto_kategori']);
+            //KategoriController::compress($data['foto_kategori']);
         }
         Kategori::create($data);
 
@@ -122,7 +122,7 @@ class KategoriController extends Controller
             $data['foto_kategori'] = $request->file('foto_kategori')->store('assets/kategori', 'public');
             
             //Compress Image Code Here
-            KategoriController::compress($data['foto_kategori']);
+            //KategoriController::compress($data['foto_kategori']);
             
             //remove URL/storage from getAttribute model foto
             $temp = URL::to('/')."/storage/";
