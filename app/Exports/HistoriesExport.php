@@ -7,21 +7,21 @@ use Maatwebsite\Excel\Concerns\FromQuery;
 use Maatwebsite\Excel\Concerns\Exportable;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 
-class RuanganExport implements FromQuery, WithHeadings
+class HistoriesExport implements FromQuery, WithHeadings
 {
     /**
     * @return \Illuminate\Support\Collection
     */
-    public function __construct(String $ruangan)
+    public function __construct(String $tanggal)
     {
-        $this->ruangan = $ruangan;
+        $this->tanggal = $tanggal;
     }
 
     public function query()
     {
         return History::query()
         ->select('id_history', 'id_pemindah', 'id_aset', 'lokasi_lama', 'lokasi_baru', 'keterangan', 'jenis_pindah')
-        ->where('created_at', 'like', '%'. $this->ruangan . '%')
+        ->where('created_at', 'like', '%'. $this->tanggal . '%')
         ->orderBy('id_history', 'asc');
     }
 

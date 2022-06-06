@@ -134,6 +134,6 @@ class RuanganController extends Controller
         $kat = (request('id_kategori')==NULL) ? '' : request('id_kategori');
 
         date_default_timezone_set('Asia/Jakarta');
-        return Excel::download(new RuanganExport($ged, $rua, $kon, $kat), $kat."".$ged."".$rua."".$kon." ".date('d-m-Y').'.xlsx');
+        return Excel::download(new RuanganExport($ged, $rua, $kon, $kat), $kat." ".$ged." ".$rua." ".$kon." ".date('d-m-Y').'.xlsx');
     }
 }

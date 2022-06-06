@@ -17,7 +17,7 @@
                 </div>
             </div>
 
-            <div class="w-full px-4 lg:w-1/2 xl:w-1/3">
+            <!-- <div class="w-full px-4 lg:w-1/2 xl:w-1/3">
                 <div class="bg-blue-600 rounded-xl shadow-lg overflow-hidden mb-10">
                     <div class="py-8 px-6">
                         <h3 class="mb-3 font-semibold text-xl text-white text-center">Laporan Ruangan</h3>
@@ -25,12 +25,22 @@
                         <p class="text-center"><a href="pindah_web.html" class="items-center font-bold text-sm text-dark bg-teal-300 py-2 px-4 rounded-lg hover:opacity-80 mr-50">Laporan Ruangan</a></p>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
         </div>
 
-        <div>
-            <!-- Filter custom -->
+        <!-- Filter Report -->
+        <div class="flex flex-wrap justify-center">
+            <!-- Filter History -->
+            <label for="tanggal">Pilih Bulan laporan untuk History Perpindahan:</label>
+            <form action="{{ route('histories.export') }}" class="flex flex-wrap mb-5">
+                <input type="month" id="tanggal" name="tanggal" min="2018-03">
+                <button type="submit" class="bg-black text-white py-1 px-3 border border-black hover:border-white rounded">
+                    Laporan Perpindahan
+                </button>
+            </form>
+            
+            <!-- Filter List Aset -->
             <div class="overflow-auto shadow hidden md:block">
                 <div class="flex flex-wrap">
                     <div class="w-full self-center px-4 lg:w-1/2">

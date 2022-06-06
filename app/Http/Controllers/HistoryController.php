@@ -6,6 +6,7 @@ use App\Models\History;
 use Illuminate\Http\Request;
 use App\Exports\HistoriesExport;
 use Illuminate\Support\Facades\Gate;
+use Maatwebsite\Excel\Facades\Excel;
 
 class HistoryController extends Controller
 {

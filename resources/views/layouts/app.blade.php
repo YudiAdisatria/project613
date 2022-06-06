@@ -83,7 +83,9 @@
                     </div>
 
                     <div class="w-full pt-10 border-t border-white">
-
+                        <p class="font-medium text-sm text-white text-center">
+                            Dibuat oleh Roy Antonio & Yudistira S.A <br> (Teknik Informatika UNIKA Soegijapranata)
+                        </p>
                     </div>
                 
                 </div>
