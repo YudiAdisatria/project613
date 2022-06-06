@@ -28,20 +28,30 @@
             </div> -->
 
         </div>
-
+        <div class="w-full pt-10 border-t border-black"></div>
+        <p class="text-center justify-center mb-2 font-bold" for="tanggal">Pilih Bulan laporan untuk History Perpindahan :</p>
         <!-- Filter Report -->
-        <div class="flex flex-wrap justify-center">
+      
             <!-- Filter History -->
-            <label for="tanggal">Pilih Bulan laporan untuk History Perpindahan:</label>
-            <form action="{{ route('histories.export') }}" class="flex flex-wrap mb-5">
-                <input type="month" id="tanggal" name="tanggal" min="2018-03">
-                <button type="submit" class="bg-black text-white py-1 px-3 border border-black hover:border-white rounded">
-                    Laporan Perpindahan
-                </button>
+            <form action="{{ route('histories.export') }}" class="mb-5">
+                <div class="text-center justify-center items-center mb-2">
+                    <input type="month" id="tanggal" name="tanggal" min="2018-03" class="mr-2">
+                </div>
+
+                <div class="justify-center items-center text-center">
+                    <button type="submit" class="bg-black text-white py-1 px-3 border border-black hover:border-white rounded">
+                        Laporan Perpindahan
+                    </button>
+                </div>
             </form>
-            
+
+        <div class="w-full pt-10 border-t border-black"></div>
             <!-- Filter List Aset -->
-            <div class="overflow-auto shadow hidden md:block">
+        <div>
+            <p class="text-center justify-center mb-2 font-bold">Pilih filter untuk laporan aset :</p>
+        </div>
+        <div class="flex flex-wrap justify-center">
+            <div class="overflow-auto hidden md:block">
                 <div class="flex flex-wrap">
                     <div class="w-full self-center px-4 lg:w-1/2">
                     </div>
@@ -50,7 +60,7 @@
                     {{-- <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
                         Filter Laporan
                     </label> --}}
-                    <select name="id_kategori" class=" mr-24 mb-3 md:mb-0 text-black bg-white hover:bg-gray-100 font-medium text-sm px-12 py-2.5 text-center inline-flex items-center" id="grid-last-name">
+                    <select name="id_kategori" class=" mr-20 mb-3 md:mb-0 text-black bg-white hover:bg-gray-100 font-medium text-sm px-12 py-2.5 text-center inline-flex items-center" id="grid-last-name">
                         <option value="" selected>Kategori</option>
                         @forelse ($kategori as $kat)
                             <option value="{{ $kat->id_kategori }}">{{ $kat->nama_kategori }}</option>
@@ -66,11 +76,11 @@
                         @endforeach
                     </select>
 
-                    <select name="ruangan" id="ruangan" class="mr-12 mb-3 md:mb-0 text-black bg-white hover:bg-gray-100 font-medium text-sm px-12 py-2.5 text-center inline-flex items-center" id="grid-last-name">
+                    <select name="ruangan" id="ruangan" class="mr-20 mb-3 md:mb-0 text-black bg-white hover:bg-gray-100 font-medium text-sm px-12 py-2.5 text-center inline-flex items-center" id="grid-last-name">
                         <option value="" selected>Ruangan</option>
                     </select>
 
-                    <select name="kondisi" class="mr-12 mb-3 md:mb-0 text-black bg-white hover:bg-gray-100 font-medium text-sm px-12 py-2.5 text-center inline-flex items-center" id="grid-last-name">
+                    <select name="kondisi" class="mr-20 mb-3 md:mb-0 text-black bg-white hover:bg-gray-100 font-medium text-sm px-12 py-2.5 text-center inline-flex items-center" id="grid-last-name">
                         <option value="" selected>Kondisi</option>
                         <option value="baik">Baik</option>
                         <option value="rusak">Rusak</option>
@@ -83,5 +93,55 @@
                 </form>
             </div>
         </div>
+
+        <!-- filter small -->
+        <div class="bg-gray-200">
+            <form action="{{ route('ruangans.export') }}" class="mb-5">
+                <div class="flex flex-wrap md:hidden">
+                    <div class="w-1/2  mt-2 px-3 ">
+                        <select name="id_kategori" class=" mr-24 mb-3 md:mb-0 text-black bg-white hover:bg-gray-100 font-medium text-sm px-12 py-2.5 text-center inline-flex items-center" id="grid-last-name">
+                            <option value="" selected>Kategori</option>
+                            @forelse ($kategori as $kat)
+                                <option value="{{ $kat->id_kategori }}">{{ $kat->nama_kategori }}</option>
+                            @empty
+                                <p>tidak ada kategori</p>
+                            @endforelse
+                        </select>
+                    </div>
+
+                    <div class="w-1/2 mt-2 px-3 ">
+                        <select name="gedung" id="gedung" class="mb-3 md:mb-0 text-black bg-white hover:bg-gray-100 font-medium text-sm px-12 py-2.5 text-center inline-flex items-center" id="grid-last-name">
+                            <option value="" selected>Gedung</option>
+                            @foreach($ruangan as $key => $value)
+                                <option value="{{ $key }}">{{ $key }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+
+                <div class="flex flex-wrap md:hidden">
+                    <div class="w-1/2  mt-2 px-3 ">
+                        <select name="ruangan" id="ruangan" class="mr-12 mb-3 md:mb-0 text-black bg-white hover:bg-gray-100 font-medium text-sm px-12 py-2.5 text-center inline-flex items-center" id="grid-last-name">
+                            <option value="" selected>Ruangan</option>
+                        </select>
+                    </div>
+
+                    <div class="w-1/2 mt-2 px-3 ">
+                        <select name="kondisi" class="mb-3 md:mb-0 text-black bg-white hover:bg-gray-100 font-medium text-sm px-12 py-2.5 text-center inline-flex items-center" id="grid-last-name">
+                            <option value="" selected>Kondisi</option>
+                            <option value="baik">Baik</option>
+                            <option value="rusak">Rusak</option>
+                            <option value="hilang">Hilang</option>
+                        </select>
+                    </div>
+                </div>  
+
+                <div class="mt-2 px-3 justify-center items-center text-center md:hidden">
+                    <button type="submit" class="bg-black text-white py-1 px-3 border border-black hover:border-white rounded justify-center items-start text-center">
+                        Laporan Ruangan
+                    </button>
+                </div>
+            </form>  
+        </div> 
     </section>
 </x-app-layout>
