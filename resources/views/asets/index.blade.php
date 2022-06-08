@@ -112,15 +112,11 @@
                 <!-- small -->
                 <!-- filter small -->
                 <div class="bg-gray-200">
-                    <form action="{{ route('asets.index') }}" class="flex flex-wrap mb-5">
+                    <form action="{{ route('asets.index') }}" class="">
                         <div class="flex flex-wrap md:hidden">
-
+                        <input type="hidden" name="filter" value="1">
                             <div class="w-1/2  mt-2 px-3 ">
-                                    {{-- <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
-                                    Filter
-                                </label> --}}
-                                <input type="hidden" name="filter" value="1">
-                                <select name="id_kategori" class=" mr-24 mb-3 md:mb-0 text-black bg-white hover:bg-gray-100 font-medium text-sm px-12 py-2.5 text-center inline-flex items-center" id="grid-last-name">
+                                <select name="id_kategori" class="mr-16 mb-3 md:mb-0 text-black bg-white hover:bg-gray-100 font-medium text-sm px-12 py-2.5 text-center inline-flex items-center" id="grid-last-name">
                                     <option value="" selected>Kategori</option>
                                     @forelse ($kategori as $kat)
                                         <option value="{{ $kat->id_kategori }}">{{ $kat->nama_kategori }}</option>
@@ -131,7 +127,7 @@
                             </div>
 
                             <div class="w-1/2 mt-2 px-3 ">
-                                <select name="gedung" id="gedung" class="mr-20 mb-3 md:mb-0 text-black bg-white hover:bg-gray-100 font-medium text-sm px-12 py-2.5 text-center inline-flex items-center" id="grid-last-name">
+                                <select name="gedung" id="gedung" class="mb-3 md:mb-0 text-black bg-white hover:bg-gray-100 font-medium text-sm px-12 py-2.5 text-center inline-flex items-center" id="grid-last-name">
                                     <option value="" selected>Gedung</option>
                                     @foreach($ruangan as $key => $value)
                                         <option value="{{ $key }}">{{ $key }}</option>
@@ -142,13 +138,13 @@
 
                         <div class="flex flex-wrap md:hidden">
                             <div class="w-1/2  mt-2 px-3 ">
-                                <select name="ruangan" id="ruangan" class="mr-12 mb-3 md:mb-0 text-black bg-white hover:bg-gray-100 font-medium text-sm px-12 py-2.5 text-center inline-flex items-center" id="grid-last-name">
+                                <select name="ruangan" id="ruangan" class="mr-16 mb-3 md:mb-0 text-black bg-white hover:bg-gray-100 font-medium text-sm px-12 py-2.5 text-center inline-flex items-center" id="grid-last-name">
                                     <option value="" selected>Ruangan</option>
                                 </select>
                             </div>
 
                             <div class="w-1/2 mt-2 px-3 ">
-                                <select name="kondisi" class="mr-12 mb-3 md:mb-0 text-black bg-white hover:bg-gray-100 font-medium text-sm px-12 py-2.5 text-center inline-flex items-center" id="grid-last-name">
+                                <select name="kondisi" class="mb-3 md:mb-0 text-black bg-white hover:bg-gray-100 font-medium text-sm px-12 py-2.5 text-center inline-flex items-center" id="grid-last-name">
                                     <option value="" selected>Kondisi</option>
                                     <option value="baik">Baik</option>
                                     <option value="rusak">Rusak</option>
