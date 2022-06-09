@@ -31,7 +31,7 @@
                         
                             <div class="w-full self-end px-5 lg:w-1/2">
                                 <div class="relative mt-5  mb-10 lg:mt-0">
-                                    <img src="{{ $item->foto_aset }}" alt="chair" class="w-96 h-80"/>
+                                    <img src="{{ $item->foto_aset }}" alt="Foto tidak tersedia" class="w-96 h-80"/>
                                 </div>
                             </div>
 

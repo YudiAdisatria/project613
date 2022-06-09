@@ -44,7 +44,7 @@
                             <td>{{ $item->nama_kategori }}</td>
                             <td>
                                 <div class="bg-transparent  mb-2 mt-2 ">
-                                    <img src="{{ $item->foto_kategori }}" class="w-48 h-36" alt="">
+                                    <img src="{{ $item->foto_kategori }}" class="w-48 h-36" alt="Foto tidak tersedia">
                                 </div> 
                             </td>
                             <td class="text-sm">
