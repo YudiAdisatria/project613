@@ -58,3 +58,32 @@ $(document).ready(function() {
     });
 });
 
+$(document).ready(function() {
+    $('#gedung1').on('change', function() {
+        var ruanganID = $(this).val();
+        console.log(ruanganID);
+        $('#ruangan1').empty();
+        $('#ruangan1').append('<option label> Processing </option>');
+        if(ruanganID) {
+            $.ajax({
+                url: '/dashboard/ruangans/'+ruanganID,
+                type: "GET",
+                data : {"_token":"{{ csrf_token() }}"},
+                dataType: "json",
+                success:function(data)
+                {
+                    if(data){
+                        $('#ruangan1').empty();
+                        $.each(data, function(key, ruangan){
+                            $('select[name="ruangan"]').append('<option value="'+ ruangan.ruangan +'">' + ruangan.ruangan+ '</option>');
+                        });
+                    }else{
+                        $('#ruangan1').empty();
+                    }
+                }
+            });
+        }else{
+            $('#ruangan1').empty();
+        }
+    });
+});
