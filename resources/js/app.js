@@ -44,6 +44,7 @@ $(document).ready(function() {
                 {
                     if(data){
                         $('#ruangan').empty();
+                        $('#ruangan').append('<option value="">'+'ruangan'+'</option>');
                         $.each(data, function(key, ruangan){
                             $('select[name="ruangan"]').append('<option value="'+ ruangan.ruangan +'">' + ruangan.ruangan+ '</option>');
                         });
