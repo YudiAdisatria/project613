@@ -74,7 +74,9 @@ class RuanganController extends Controller
      */
     public function show($id)
     {
-        $ruangan = Ruangan::Where('gedung', 'like', '%'.$id.'%')->get();
+        $ruangan = Ruangan::Where('gedung', 'like', '%'.$id.'%')
+            ->orderBy('ruangan')
+            ->get();
         return response()->json($ruangan);
     }
 

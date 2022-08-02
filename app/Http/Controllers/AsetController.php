@@ -40,6 +40,8 @@ class AsetController extends Controller
                 ->orWhere('ruangan', 'like', '%'. request('search') . '%')
                 ->orWhere('id_kategori', 'like', '%'. $kategori . '%')
                 ->paginate(50);
+            
+            $kategori = Kategori::orderByRaw("RIGHT(id_kategori, 1)")->get();
 
             return view('asets.index', [
                 'aset' => $aset,
